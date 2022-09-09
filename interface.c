@@ -16,7 +16,15 @@ int load_file(char* path,FILE** fp){
 }
 
 int read_file(FILE** fp,char *out,int len){
-    int nb_read=fread(out, sizeof(char), len, *fp);
+    int nb_read=0,pos=0;
+    int nb_iterations=len/TAILLE_MAX_BUFFER;
+    int nb_rest=len%TAILLE_MAX_BUFFER;
+    for(int i=0;i<nb_iterations;i++){
+        pos= ftell(*fp);
+        nb_read+=fread(out+pos, sizeof(char), TAILLE_MAX_BUFFER, *fp);
+    }
+    pos= ftell(*fp);
+    nb_read+=fread(out+pos, sizeof(char), nb_rest, *fp);
     fclose(*fp);
     return nb_read;
 }

@@ -18,6 +18,7 @@
 #include <stdio_ext.h>
 #endif
 #define TAILLE_MAX_CLE 256
+#define TAILLE_MAX_BUFFER 100000
 
 typedef struct{
     FILE* fp_source;
