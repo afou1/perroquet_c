@@ -5,7 +5,7 @@ void print_sep(){
 }
 
 int load_file(char* path,FILE** fp){
-    if(*fp= fopen(path,"rb")){
+    if((*fp= fopen(path,"rb"))){
         fseek(*fp, 0, SEEK_END);    // Go to end
         int length = ftell(*fp);
         fseek(*fp, 0, SEEK_SET);
@@ -128,7 +128,6 @@ void load_source(s_params *params){
         loop_err_file(params->path_source,"source","rb");
     }
     params->size_source= load_file(params->path_source,&params->fp_source);
-    strcpy(params->path_source,params->path_source);
     printf("Fichier source charge: %s\n",params->path_source);
     print_sep();
 }
@@ -149,7 +148,7 @@ void load_pass(s_params *params){
             save_file(params->cle,params->size_cle,&fp);
             printf("Sauvegarde de la cle dans le fichier: %s\n",path_cle);
         }else{
-            printf("Erreur sauvgarde de la clé\n",path_cle);
+            printf("Erreur sauvgarde de la clé %s\n",path_cle);
         }
         print_sep();
     }else if (params->mode_chiffrement==0){
