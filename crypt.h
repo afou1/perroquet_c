@@ -7,6 +7,8 @@
 
 void chiffrer(char* text_clair,char* perroquet,char* text_crypt,int l_text,int l_perroquet);
 void dechiffrer(char* text_crypt,char* perroquet,char* text_clair,int l_text,int l_perroquet);
+void chiffrer_f(FILE **f_input,FILE **f_output,char* perroquet,int l_text,int l_perroquet);
+void dechiffrer_f(FILE **f_input,FILE **f_output,char* perroquet,int l_text,int l_perroquet);
 
 
 
