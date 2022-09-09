@@ -1,0 +1,216 @@
+.TH "interface.c" 3 "Fri Sep 9 2022" "Version 0.0.1" "perroquet" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+interface.c
+.SH SYNOPSIS
+.br
+.PP
+\fC#include 'interface\&.h'\fP
+.br
+
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBprint_sep\fP ()"
+.br
+.RI "Fonction qui me serre a separer l'affichage des differents traitement\&. "
+.ti -1c
+.RI "int \fBload_file\fP (char *path, FILE **fp)"
+.br
+.ti -1c
+.RI "int \fBread_file\fP (FILE **fp, char *out, int len)"
+.br
+.ti -1c
+.RI "int \fBsave_file\fP (char *text_crypt, int len, FILE **fp_out)"
+.br
+.ti -1c
+.RI "void \fBinit_params\fP (\fBs_params\fP *params)"
+.br
+.ti -1c
+.RI "void \fBloop_err_file\fP (char *path, char *filename, char *mode)"
+.br
+.ti -1c
+.RI "void \fBloop_err_dest\fP (char *path, int b_overwrite)"
+.br
+.ti -1c
+.RI "void \fBclose_everything\fP (\fBs_params\fP *params)"
+.br
+.ti -1c
+.RI "void \fBcheck_mode\fP (char *arg, \fBs_params\fP *params)"
+.br
+.ti -1c
+.RI "void \fBload_source\fP (\fBs_params\fP *params)"
+.br
+.ti -1c
+.RI "void \fBload_pass\fP (\fBs_params\fP *params)"
+.br
+.ti -1c
+.RI "void \fBload_dest\fP (\fBs_params\fP *params)"
+.br
+.ti -1c
+.RI "void \fBload_mode\fP (\fBs_params\fP *params)"
+.br
+.ti -1c
+.RI "void \fBload_params\fP (int argc, char **argv, \fBs_params\fP *params)"
+.br
+.in -1c
+.SH "Function Documentation"
+.PP 
+.SS "void check_mode (char * arg, \fBs_params\fP * params)"
+
+.PP
+Definition at line 158 of file interface\&.c\&.
+.SS "void close_everything (\fBs_params\fP * params)"
+Fonction qui devrait permettre de fermer les fichier dans le cas d'une sortie soudaine à cause d'une erreure 
+.PP
+\fBParameters\fP
+.RS 4
+\fIparams\fP Les parametres du programme 
+.RE
+.PP
+
+.PP
+Definition at line 91 of file interface\&.c\&.
+.SS "void init_params (\fBs_params\fP * params)"
+initilise les parameteres/fonctionnement par default du programme\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIparams\fP 
+.RE
+.PP
+
+.PP
+Definition at line 44 of file interface\&.c\&.
+.SS "void load_dest (\fBs_params\fP * params)"
+
+.PP
+Definition at line 221 of file interface\&.c\&.
+.SS "int load_file (char * path, FILE ** fp)"
+Fonction qui va charger un fichier à partir d'un chemin 
+.PP
+\fBParameters\fP
+.RS 4
+\fIpath\fP tableau de char qui represente l'emplacement du fichier 
+.br
+\fIfp\fP double pointeur vers le fichier, on a besoin du double poineur pour changer ca valeur avec fopen 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+si on a pu ouvrir le fichier, une valeur positive qui represente la taille du fichier en octets 
+.br
+ sinon -1 
+.RE
+.PP
+
+.PP
+Definition at line 10 of file interface\&.c\&.
+.SS "void load_mode (\fBs_params\fP * params)"
+
+.PP
+Definition at line 238 of file interface\&.c\&.
+.SS "void load_params (int argc, char ** argv, \fBs_params\fP * params)"
+Fonction d'entré pour l'interface, elle va charger tout les parameteres necessaire à l'execution du programme, en lisant les arguments passés et en interagissant avec l'utilisateur 
+.PP
+\fBParameters\fP
+.RS 4
+\fIargc\fP nobmre d'arguments passés au programme 
+.br
+\fIargv\fP tableau de chaines de caracteres, qui contient tous les arguments passés 
+.br
+\fIparams\fP structure qui va contenir tout les parameteres qu'on utilise dans le programme 
+.RE
+.PP
+
+.PP
+Definition at line 258 of file interface\&.c\&.
+.SS "void load_pass (\fBs_params\fP * params)"
+
+.PP
+Definition at line 178 of file interface\&.c\&.
+.SS "void load_source (\fBs_params\fP * params)"
+
+.PP
+Definition at line 166 of file interface\&.c\&.
+.SS "void loop_err_dest (char * path, int b_overwrite)"
+Fonction qui prend l'input d'un utilisateur et qui va boucler tant qu'on a pas un chemin utilisable pour la lecture d'un fichier source 
+.br
+Cette fonction qui devrait etre remplacé par loop_err_file dans le futur 
+.PP
+\fBParameters\fP
+.RS 4
+\fIpath\fP la premiere valeure passé par l'utilisateur 
+.br
+\fIb_overwrite\fP parametre qui va nous permettre de savoir si on peut ecraser un fichier deja existant ou non 
+.RE
+.PP
+
+.PP
+Definition at line 68 of file interface\&.c\&.
+.SS "void loop_err_file (char * path, char * filename, char * mode)"
+Fonction qui prend l'input d'un utilisateur et qui va boucler tant qu'on a pas un chemin utilisable pour la lecture d'un fichier source 
+.PP
+\fBParameters\fP
+.RS 4
+\fIpath\fP la premiere valeur entrée par l'utilisateur 
+.br
+\fIfilename\fP valeur qui devait me permettre de traiter le fichier source et destination dans la meme fonction 
+.br
+\fImode\fP chaine de caracteres qui va etre passé à fopen ('rb'/'wb') 
+.RE
+.PP
+
+.PP
+Definition at line 55 of file interface\&.c\&.
+.SS "void print_sep ()"
+
+.PP
+Fonction qui me serre a separer l'affichage des differents traitement\&. 
+.PP
+Definition at line 5 of file interface\&.c\&.
+.SS "int read_file (FILE ** fp, char * out, int len)"
+Fonction qui va lire la une taille fix de caracteres à partir du fichier, et va la mettre dans out 
+.PP
+\fBParameters\fP
+.RS 4
+\fIfp\fP double pointeur vers le fichier, car on appele fclose à l'interieur 
+.br
+\fIout\fP tableau qui va recevoir le resultat de la lecture 
+.br
+\fIlen\fP le nombre de caracteres qu'on voudrait lire 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+le nombre de caracteres qu'on a pu lire (pas forcement egal à len) 
+.RE
+.PP
+
+.PP
+Definition at line 21 of file interface\&.c\&.
+.SS "int save_file (char * text_crypt, int len, FILE ** fp_out)"
+Fonction qui permet de sauvegarder un tableau de char dans un fichier 
+.PP
+\fBParameters\fP
+.RS 4
+\fItext_crypt\fP tableau à enregistrer 
+.br
+\fIlen\fP taile du tableau 
+.br
+\fIfp_out\fP double pointeur vers le fichier\&. On ferme le fichier apres traitement 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+0 si l'ecriture est réussie, sinon le nombre de caracteres qu'on a pu ecrire\&. 
+.RE
+.PP
+
+.PP
+Definition at line 35 of file interface\&.c\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for perroquet from the source code\&.

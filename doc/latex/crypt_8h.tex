@@ -1,0 +1,111 @@
+\hypertarget{crypt_8h}{}\doxysection{crypt.\+h File Reference}
+\label{crypt_8h}\index{crypt.h@{crypt.h}}
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{crypt_8h_af9c0ea31683b97de75ce4472d00d79fc}{chiffrer}} (char $\ast$text\+\_\+clair, char $\ast$perroquet, char $\ast$text\+\_\+crypt, int l\+\_\+text, int l\+\_\+perroquet)
+\item 
+void \mbox{\hyperlink{crypt_8h_a08a8da87cac675d4c75065f85563b06d}{dechiffrer}} (char $\ast$text\+\_\+crypt, char $\ast$perroquet, char $\ast$text\+\_\+clair, int l\+\_\+text, int l\+\_\+perroquet)
+\item 
+void \mbox{\hyperlink{crypt_8h_ac8571841a9cf92ab7840d5d83dab9d87}{chiffrer\+\_\+f}} (FILE $\ast$$\ast$f\+\_\+input, FILE $\ast$$\ast$f\+\_\+output, char $\ast$perroquet, int l\+\_\+text, int l\+\_\+perroquet)
+\item 
+void \mbox{\hyperlink{crypt_8h_a72db0e72110a51eb4ac0a60154555f64}{dechiffrer\+\_\+f}} (FILE $\ast$$\ast$f\+\_\+input, FILE $\ast$$\ast$f\+\_\+output, char $\ast$perroquet, int l\+\_\+text, int l\+\_\+perroquet)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{crypt_8h_af9c0ea31683b97de75ce4472d00d79fc}\label{crypt_8h_af9c0ea31683b97de75ce4472d00d79fc}} 
+\index{crypt.h@{crypt.h}!chiffrer@{chiffrer}}
+\index{chiffrer@{chiffrer}!crypt.h@{crypt.h}}
+\doxysubsubsection{\texorpdfstring{chiffrer()}{chiffrer()}}
+{\footnotesize\ttfamily void chiffrer (\begin{DoxyParamCaption}\item[{char $\ast$}]{text\+\_\+clair,  }\item[{char $\ast$}]{perroquet,  }\item[{char $\ast$}]{text\+\_\+crypt,  }\item[{int}]{l\+\_\+text,  }\item[{int}]{l\+\_\+perroquet }\end{DoxyParamCaption})}
+
+Fonction de dechiffrement qui prend deux tableaux, selon la cle donné dans perroquet 
+\begin{DoxyParams}{Parameters}
+{\em text\+\_\+clair} & tableau de char qui represente une partie de fichier à chiffrer \\
+\hline
+{\em perroquet} & tableau de char qui represente la cle de chiffrement \\
+\hline
+{\em text\+\_\+crypt} & tableau ou on va mettre le resultat du chiffrement, la fonction fait la supposition qu\textquotesingle{}il a la meme taille que text\+\_\+clair \\
+\hline
+{\em l\+\_\+text} & taille du tableau text\+\_\+clair et text\+\_\+crypt, je le passe en argument car j\textquotesingle{}essaie de prendre en consideration le cas ou on a un tableau qui contient la valeur ascii \textbackslash{}0 avant la fin \\
+\hline
+{\em l\+\_\+perroquet} & taille de la clé \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 5 of file crypt.\+c.
+
+\mbox{\Hypertarget{crypt_8h_ac8571841a9cf92ab7840d5d83dab9d87}\label{crypt_8h_ac8571841a9cf92ab7840d5d83dab9d87}} 
+\index{crypt.h@{crypt.h}!chiffrer\_f@{chiffrer\_f}}
+\index{chiffrer\_f@{chiffrer\_f}!crypt.h@{crypt.h}}
+\doxysubsubsection{\texorpdfstring{chiffrer\_f()}{chiffrer\_f()}}
+{\footnotesize\ttfamily void chiffrer\+\_\+f (\begin{DoxyParamCaption}\item[{FILE $\ast$$\ast$}]{f\+\_\+input,  }\item[{FILE $\ast$$\ast$}]{f\+\_\+output,  }\item[{char $\ast$}]{perroquet,  }\item[{int}]{l\+\_\+text,  }\item[{int}]{l\+\_\+perroquet }\end{DoxyParamCaption})}
+
+Fonction de chiffrement qui prend deux flux de fichier ouverts, et qui va chiffrer selon la cle qui est donné dans perroquet 
+\begin{DoxyParams}{Parameters}
+{\em f\+\_\+input} & double pointeur vers le fichier en clair, je prend un double pointeur pour eviter les erreurs avec ftell et fseek \\
+\hline
+{\em f\+\_\+output} & double pointeur vers le fichier destination apres chiffrement \\
+\hline
+{\em perroquet} & tableau de char qui represente la cle de chiffrement \\
+\hline
+{\em l\+\_\+text} & taille du tableau text\+\_\+clair et text\+\_\+crypt \\
+\hline
+{\em l\+\_\+perroquet} & taille de la clé \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 16 of file crypt.\+c.
+
+\mbox{\Hypertarget{crypt_8h_a08a8da87cac675d4c75065f85563b06d}\label{crypt_8h_a08a8da87cac675d4c75065f85563b06d}} 
+\index{crypt.h@{crypt.h}!dechiffrer@{dechiffrer}}
+\index{dechiffrer@{dechiffrer}!crypt.h@{crypt.h}}
+\doxysubsubsection{\texorpdfstring{dechiffrer()}{dechiffrer()}}
+{\footnotesize\ttfamily void dechiffrer (\begin{DoxyParamCaption}\item[{char $\ast$}]{text\+\_\+crypt,  }\item[{char $\ast$}]{perroquet,  }\item[{char $\ast$}]{text\+\_\+clair,  }\item[{int}]{l\+\_\+text,  }\item[{int}]{l\+\_\+perroquet }\end{DoxyParamCaption})}
+
+Fonction de dechiffrement qui prend deux tableaux, cette fonction ne peux pas prendre des tableaux trop volumineux donc on l\textquotesingle{}appelle dans dechiffrer\+\_\+f pour iterer sur un fichier avec un buffer de taille fix. 
+\begin{DoxyParams}{Parameters}
+{\em text\+\_\+crypt} & tableau de char qui represente une partie de fichier à dechiffrer \\
+\hline
+{\em perroquet} & tableau de char qui represente la cle de chiffrement \\
+\hline
+{\em text\+\_\+clair} & ableau ou on va mettre le resultat du dechiffrement, la fonction fait la meme supposition que \mbox{\hyperlink{crypt_8h_af9c0ea31683b97de75ce4472d00d79fc}{chiffrer()}} \\
+\hline
+{\em l\+\_\+text} & taille du tableau text\+\_\+clair et text\+\_\+crypt \\
+\hline
+{\em l\+\_\+perroquet} & taille de la clé \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 10 of file crypt.\+c.
+
+\mbox{\Hypertarget{crypt_8h_a72db0e72110a51eb4ac0a60154555f64}\label{crypt_8h_a72db0e72110a51eb4ac0a60154555f64}} 
+\index{crypt.h@{crypt.h}!dechiffrer\_f@{dechiffrer\_f}}
+\index{dechiffrer\_f@{dechiffrer\_f}!crypt.h@{crypt.h}}
+\doxysubsubsection{\texorpdfstring{dechiffrer\_f()}{dechiffrer\_f()}}
+{\footnotesize\ttfamily void dechiffrer\+\_\+f (\begin{DoxyParamCaption}\item[{FILE $\ast$$\ast$}]{f\+\_\+input,  }\item[{FILE $\ast$$\ast$}]{f\+\_\+output,  }\item[{char $\ast$}]{perroquet,  }\item[{int}]{l\+\_\+text,  }\item[{int}]{l\+\_\+perroquet }\end{DoxyParamCaption})}
+
+Fonction de dechifrement qui prend deux flux de fichier ouverts, et qui va dechiffrer selon la cle qui est donné dans perroquet 
+\begin{DoxyParams}{Parameters}
+{\em f\+\_\+input} & double pointeur vers le fichier de chiffrement \\
+\hline
+{\em f\+\_\+output} & double pointeur vers le fichier destination apres dechiffrement \\
+\hline
+{\em perroquet} & tableau de char qui represente la cle de chiffrement \\
+\hline
+{\em l\+\_\+text} & taille du tableau text\+\_\+clair et text\+\_\+crypt \\
+\hline
+{\em l\+\_\+perroquet} & taille de la clé \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 35 of file crypt.\+c.
+

@@ -1,0 +1,110 @@
+.TH "crypt.c" 3 "Fri Sep 9 2022" "Version 0.0.1" "perroquet" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+crypt.c
+.SH SYNOPSIS
+.br
+.PP
+\fC#include 'crypt\&.h'\fP
+.br
+\fC#include 'interface\&.h'\fP
+.br
+
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBchiffrer\fP (char *text_clair, char *perroquet, char *text_crypt, int l_text, int l_perroquet)"
+.br
+.ti -1c
+.RI "void \fBdechiffrer\fP (char *text_crypt, char *perroquet, char *text_clair, int l_text, int l_perroquet)"
+.br
+.ti -1c
+.RI "void \fBchiffrer_f\fP (FILE **f_input, FILE **f_output, char *perroquet, int l_text, int l_perroquet)"
+.br
+.ti -1c
+.RI "void \fBdechiffrer_f\fP (FILE **f_input, FILE **f_output, char *perroquet, int l_text, int l_perroquet)"
+.br
+.in -1c
+.SH "Function Documentation"
+.PP 
+.SS "void chiffrer (char * text_clair, char * perroquet, char * text_crypt, int l_text, int l_perroquet)"
+Fonction de dechiffrement qui prend deux tableaux, selon la cle donné dans perroquet 
+.PP
+\fBParameters\fP
+.RS 4
+\fItext_clair\fP tableau de char qui represente une partie de fichier à chiffrer 
+.br
+\fIperroquet\fP tableau de char qui represente la cle de chiffrement 
+.br
+\fItext_crypt\fP tableau ou on va mettre le resultat du chiffrement, la fonction fait la supposition qu'il a la meme taille que text_clair 
+.br
+\fIl_text\fP taille du tableau text_clair et text_crypt, je le passe en argument car j'essaie de prendre en consideration le cas ou on a un tableau qui contient la valeur ascii \\0 avant la fin 
+.br
+\fIl_perroquet\fP taille de la clé 
+.RE
+.PP
+
+.PP
+Definition at line 5 of file crypt\&.c\&.
+.SS "void chiffrer_f (FILE ** f_input, FILE ** f_output, char * perroquet, int l_text, int l_perroquet)"
+Fonction de chiffrement qui prend deux flux de fichier ouverts, et qui va chiffrer selon la cle qui est donné dans perroquet 
+.PP
+\fBParameters\fP
+.RS 4
+\fIf_input\fP double pointeur vers le fichier en clair, je prend un double pointeur pour eviter les erreurs avec ftell et fseek 
+.br
+\fIf_output\fP double pointeur vers le fichier destination apres chiffrement 
+.br
+\fIperroquet\fP tableau de char qui represente la cle de chiffrement 
+.br
+\fIl_text\fP taille du tableau text_clair et text_crypt 
+.br
+\fIl_perroquet\fP taille de la clé 
+.RE
+.PP
+
+.PP
+Definition at line 16 of file crypt\&.c\&.
+.SS "void dechiffrer (char * text_crypt, char * perroquet, char * text_clair, int l_text, int l_perroquet)"
+Fonction de dechiffrement qui prend deux tableaux, cette fonction ne peux pas prendre des tableaux trop volumineux donc on l'appelle dans dechiffrer_f pour iterer sur un fichier avec un buffer de taille fix\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fItext_crypt\fP tableau de char qui represente une partie de fichier à dechiffrer 
+.br
+\fIperroquet\fP tableau de char qui represente la cle de chiffrement 
+.br
+\fItext_clair\fP ableau ou on va mettre le resultat du dechiffrement, la fonction fait la meme supposition que \fBchiffrer()\fP 
+.br
+\fIl_text\fP taille du tableau text_clair et text_crypt 
+.br
+\fIl_perroquet\fP taille de la clé 
+.RE
+.PP
+
+.PP
+Definition at line 10 of file crypt\&.c\&.
+.SS "void dechiffrer_f (FILE ** f_input, FILE ** f_output, char * perroquet, int l_text, int l_perroquet)"
+Fonction de dechifrement qui prend deux flux de fichier ouverts, et qui va dechiffrer selon la cle qui est donné dans perroquet 
+.PP
+\fBParameters\fP
+.RS 4
+\fIf_input\fP double pointeur vers le fichier de chiffrement 
+.br
+\fIf_output\fP double pointeur vers le fichier destination apres dechiffrement 
+.br
+\fIperroquet\fP tableau de char qui represente la cle de chiffrement 
+.br
+\fIl_text\fP taille du tableau text_clair et text_crypt 
+.br
+\fIl_perroquet\fP taille de la clé 
+.RE
+.PP
+
+.PP
+Definition at line 35 of file crypt\&.c\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for perroquet from the source code\&.

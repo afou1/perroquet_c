@@ -1,8 +1,11 @@
 #include "interface.h"
 
+
+
 void print_sep(){
     printf("==================================\n");
 }
+
 
 int load_file(char* path,FILE** fp){
     if((*fp= fopen(path,"rb"))){

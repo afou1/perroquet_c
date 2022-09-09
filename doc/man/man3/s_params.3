@@ -1,0 +1,100 @@
+.TH "s_params" 3 "Fri Sep 9 2022" "Version 0.0.1" "perroquet" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+s_params
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <interface\&.h>\fP
+.SS "Data Fields"
+
+.in +1c
+.ti -1c
+.RI "FILE * \fBfp_source\fP"
+.br
+.ti -1c
+.RI "int \fBsize_source\fP"
+.br
+.ti -1c
+.RI "char \fBpath_source\fP [FILENAME_MAX]"
+.br
+.ti -1c
+.RI "FILE * \fBfp_dest\fP"
+.br
+.ti -1c
+.RI "char \fBpath_destination\fP [FILENAME_MAX]"
+.br
+.ti -1c
+.RI "int \fBb_dest\fP"
+.br
+.ti -1c
+.RI "char \fBcle\fP [\fBTAILLE_MAX_CLE\fP]"
+.br
+.ti -1c
+.RI "int \fBsize_cle\fP"
+.br
+.ti -1c
+.RI "int \fBmode_chiffrement\fP"
+.br
+.ti -1c
+.RI "int \fBkeep\fP"
+.br
+.ti -1c
+.RI "int \fBb_overwrite\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Definition at line 27 of file interface\&.h\&.
+.SH "Field Documentation"
+.PP 
+.SS "int b_dest"
+flag que j'utilise que l'etat de la valeur du fichier de sortie (si le fichier existe deja vs on peut le creer par exemple) 
+.PP
+Definition at line 33 of file interface\&.h\&.
+.SS "int b_overwrite"
+valeur qui devrait me permettre de savoir si l'utilisateur est d'accord pour eccraser un fichier deja existant et le remplacer par le resultat de notre traitement 
+.PP
+Definition at line 38 of file interface\&.h\&.
+.SS "char cle[\fBTAILLE_MAX_CLE\fP]"
+la cle de chiffrement, on prend la taille max defini dans \fBinterface\&.h\fP 
+.PP
+Definition at line 34 of file interface\&.h\&.
+.SS "FILE* fp_dest"
+pointeur pour le fichier destination 
+.PP
+Definition at line 31 of file interface\&.h\&.
+.SS "FILE* fp_source"
+pointeur pour le fichier source 
+.PP
+Definition at line 28 of file interface\&.h\&.
+.SS "int keep"
+valeur qui me permet de savoir si je dois supprimer le fichier source 
+.PP
+Definition at line 37 of file interface\&.h\&.
+.SS "int mode_chiffrement"
+valeur qui me permet de savoir si l'utilsateur essaie de chiffrer ou dechiffrer le fichier en input 
+.PP
+Definition at line 36 of file interface\&.h\&.
+.SS "char path_destination[FILENAME_MAX]"
+chemin du fichier destination 
+.PP
+Definition at line 32 of file interface\&.h\&.
+.SS "char path_source[FILENAME_MAX]"
+chemin du fichier source, on prend la taille max definie dans stdio_lim\&.h 
+.PP
+Definition at line 30 of file interface\&.h\&.
+.SS "int size_cle"
+la taille de la chaine apres lecture de l'input de l'utilisateur (en utilsant strlen dans ce cas la) 
+.PP
+Definition at line 35 of file interface\&.h\&.
+.SS "int size_source"
+Taille du fichier source en octets 
+.PP
+Definition at line 29 of file interface\&.h\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for perroquet from the source code\&.

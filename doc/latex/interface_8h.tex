@@ -1,0 +1,257 @@
+\hypertarget{interface_8h}{}\doxysection{interface.\+h File Reference}
+\label{interface_8h}\index{interface.h@{interface.h}}
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include $<$errno.\+h$>$}\newline
+{\ttfamily \#include $<$argp.\+h$>$}\newline
+{\ttfamily \#include $<$argz.\+h$>$}\newline
+{\ttfamily \#include $<$io.\+h$>$}\newline
+\doxysubsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structs__params}{s\+\_\+params}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{interface_8h_a93329fc68c72e081f4980bdff755a1e3}{\+\_\+\+\_\+fpurge}}~fflush
+\item 
+\#define \mbox{\hyperlink{interface_8h_a19865ecdd2722e5127c2c6b6effa73dc}{access}}~\+\_\+access
+\item 
+\#define \mbox{\hyperlink{interface_8h_a73e0a05fefa924bcbf416fe6b3a67b13}{TAILLE\+\_\+\+MAX\+\_\+\+CLE}}~256
+\item 
+\#define \mbox{\hyperlink{interface_8h_af783937c70ef34921b7619c1df652a1a}{TAILLE\+\_\+\+MAX\+\_\+\+BUFFER}}~100000
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{interface_8h_ae976803a19b1d9133e25b5e47da21caa}{print\+\_\+sep}} ()
+\begin{DoxyCompactList}\small\item\em Fonction qui me serre a separer l\textquotesingle{}affichage des differents traitement. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{interface_8h_aed475c1cd069781375bfe2e2f3ef8d83}{load\+\_\+file}} (char $\ast$path, FILE $\ast$$\ast$fp)
+\item 
+int \mbox{\hyperlink{interface_8h_a6fd581aa5621803b0e6f40c8147eeb03}{read\+\_\+file}} (FILE $\ast$$\ast$fp, char $\ast$out, int len)
+\item 
+int \mbox{\hyperlink{interface_8h_a3ca769819b8881bbae4eacb4c69d259e}{save\+\_\+file}} (char $\ast$text\+\_\+crypt, int len, FILE $\ast$$\ast$fp\+\_\+out)
+\item 
+void \mbox{\hyperlink{interface_8h_ad98ceaa9822eec3bf7010d3f18dd87b0}{init\+\_\+params}} (\mbox{\hyperlink{structs__params}{s\+\_\+params}} $\ast$params)
+\item 
+void \mbox{\hyperlink{interface_8h_a631f3956b702bcc55f7e3ab97958b965}{loop\+\_\+err\+\_\+file}} (char $\ast$path, char $\ast$filename, char $\ast$mode)
+\item 
+void \mbox{\hyperlink{interface_8h_a4de6a28bbd6f0151d0ef33ef7667753b}{loop\+\_\+err\+\_\+dest}} (char $\ast$path, int b\+\_\+overwrite)
+\item 
+void \mbox{\hyperlink{interface_8h_a7723fee1197bd96dc84f5a76eecfec39}{load\+\_\+params}} (int argc, char $\ast$$\ast$argv, \mbox{\hyperlink{structs__params}{s\+\_\+params}} $\ast$params)
+\item 
+void \mbox{\hyperlink{interface_8h_a34c85c8a32be6618b902ad4ddc56e62b}{close\+\_\+everything}} (\mbox{\hyperlink{structs__params}{s\+\_\+params}} $\ast$params)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{interface_8h_a93329fc68c72e081f4980bdff755a1e3}\label{interface_8h_a93329fc68c72e081f4980bdff755a1e3}} 
+\index{interface.h@{interface.h}!\_\_fpurge@{\_\_fpurge}}
+\index{\_\_fpurge@{\_\_fpurge}!interface.h@{interface.h}}
+\doxysubsubsection{\texorpdfstring{\_\_fpurge}{\_\_fpurge}}
+{\footnotesize\ttfamily \#define \+\_\+\+\_\+fpurge~fflush}
+
+
+
+Definition at line 13 of file interface.\+h.
+
+\mbox{\Hypertarget{interface_8h_a19865ecdd2722e5127c2c6b6effa73dc}\label{interface_8h_a19865ecdd2722e5127c2c6b6effa73dc}} 
+\index{interface.h@{interface.h}!access@{access}}
+\index{access@{access}!interface.h@{interface.h}}
+\doxysubsubsection{\texorpdfstring{access}{access}}
+{\footnotesize\ttfamily \#define access~\+\_\+access}
+
+
+
+Definition at line 14 of file interface.\+h.
+
+\mbox{\Hypertarget{interface_8h_af783937c70ef34921b7619c1df652a1a}\label{interface_8h_af783937c70ef34921b7619c1df652a1a}} 
+\index{interface.h@{interface.h}!TAILLE\_MAX\_BUFFER@{TAILLE\_MAX\_BUFFER}}
+\index{TAILLE\_MAX\_BUFFER@{TAILLE\_MAX\_BUFFER}!interface.h@{interface.h}}
+\doxysubsubsection{\texorpdfstring{TAILLE\_MAX\_BUFFER}{TAILLE\_MAX\_BUFFER}}
+{\footnotesize\ttfamily \#define TAILLE\+\_\+\+MAX\+\_\+\+BUFFER~100000}
+
+
+
+Definition at line 21 of file interface.\+h.
+
+\mbox{\Hypertarget{interface_8h_a73e0a05fefa924bcbf416fe6b3a67b13}\label{interface_8h_a73e0a05fefa924bcbf416fe6b3a67b13}} 
+\index{interface.h@{interface.h}!TAILLE\_MAX\_CLE@{TAILLE\_MAX\_CLE}}
+\index{TAILLE\_MAX\_CLE@{TAILLE\_MAX\_CLE}!interface.h@{interface.h}}
+\doxysubsubsection{\texorpdfstring{TAILLE\_MAX\_CLE}{TAILLE\_MAX\_CLE}}
+{\footnotesize\ttfamily \#define TAILLE\+\_\+\+MAX\+\_\+\+CLE~256}
+
+
+
+Definition at line 20 of file interface.\+h.
+
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{interface_8h_a34c85c8a32be6618b902ad4ddc56e62b}\label{interface_8h_a34c85c8a32be6618b902ad4ddc56e62b}} 
+\index{interface.h@{interface.h}!close\_everything@{close\_everything}}
+\index{close\_everything@{close\_everything}!interface.h@{interface.h}}
+\doxysubsubsection{\texorpdfstring{close\_everything()}{close\_everything()}}
+{\footnotesize\ttfamily void close\+\_\+everything (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structs__params}{s\+\_\+params}} $\ast$}]{params }\end{DoxyParamCaption})}
+
+Fonction qui devrait permettre de fermer les fichier dans le cas d\textquotesingle{}une sortie soudaine à cause d\textquotesingle{}une erreure 
+\begin{DoxyParams}{Parameters}
+{\em params} & Les parametres du programme \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 91 of file interface.\+c.
+
+\mbox{\Hypertarget{interface_8h_ad98ceaa9822eec3bf7010d3f18dd87b0}\label{interface_8h_ad98ceaa9822eec3bf7010d3f18dd87b0}} 
+\index{interface.h@{interface.h}!init\_params@{init\_params}}
+\index{init\_params@{init\_params}!interface.h@{interface.h}}
+\doxysubsubsection{\texorpdfstring{init\_params()}{init\_params()}}
+{\footnotesize\ttfamily void init\+\_\+params (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structs__params}{s\+\_\+params}} $\ast$}]{params }\end{DoxyParamCaption})}
+
+initilise les parameteres/fonctionnement par default du programme. 
+\begin{DoxyParams}{Parameters}
+{\em params} & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 44 of file interface.\+c.
+
+\mbox{\Hypertarget{interface_8h_aed475c1cd069781375bfe2e2f3ef8d83}\label{interface_8h_aed475c1cd069781375bfe2e2f3ef8d83}} 
+\index{interface.h@{interface.h}!load\_file@{load\_file}}
+\index{load\_file@{load\_file}!interface.h@{interface.h}}
+\doxysubsubsection{\texorpdfstring{load\_file()}{load\_file()}}
+{\footnotesize\ttfamily int load\+\_\+file (\begin{DoxyParamCaption}\item[{char $\ast$}]{path,  }\item[{FILE $\ast$$\ast$}]{fp }\end{DoxyParamCaption})}
+
+Fonction qui va charger un fichier à partir d\textquotesingle{}un chemin 
+\begin{DoxyParams}{Parameters}
+{\em path} & tableau de char qui represente l\textquotesingle{}emplacement du fichier \\
+\hline
+{\em fp} & double pointeur vers le fichier, on a besoin du double poineur pour changer ca valeur avec fopen \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+si on a pu ouvrir le fichier, une valeur positive qui represente la taille du fichier en octets ~\newline
+ sinon -\/1 
+\end{DoxyReturn}
+
+
+Definition at line 10 of file interface.\+c.
+
+\mbox{\Hypertarget{interface_8h_a7723fee1197bd96dc84f5a76eecfec39}\label{interface_8h_a7723fee1197bd96dc84f5a76eecfec39}} 
+\index{interface.h@{interface.h}!load\_params@{load\_params}}
+\index{load\_params@{load\_params}!interface.h@{interface.h}}
+\doxysubsubsection{\texorpdfstring{load\_params()}{load\_params()}}
+{\footnotesize\ttfamily void load\+\_\+params (\begin{DoxyParamCaption}\item[{int}]{argc,  }\item[{char $\ast$$\ast$}]{argv,  }\item[{\mbox{\hyperlink{structs__params}{s\+\_\+params}} $\ast$}]{params }\end{DoxyParamCaption})}
+
+Fonction d\textquotesingle{}entré pour l\textquotesingle{}interface, elle va charger tout les parameteres necessaire à l\textquotesingle{}execution du programme, en lisant les arguments passés et en interagissant avec l\textquotesingle{}utilisateur 
+\begin{DoxyParams}{Parameters}
+{\em argc} & nobmre d\textquotesingle{}arguments passés au programme \\
+\hline
+{\em argv} & tableau de chaines de caracteres, qui contient tous les arguments passés \\
+\hline
+{\em params} & structure qui va contenir tout les parameteres qu\textquotesingle{}on utilise dans le programme \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 258 of file interface.\+c.
+
+\mbox{\Hypertarget{interface_8h_a4de6a28bbd6f0151d0ef33ef7667753b}\label{interface_8h_a4de6a28bbd6f0151d0ef33ef7667753b}} 
+\index{interface.h@{interface.h}!loop\_err\_dest@{loop\_err\_dest}}
+\index{loop\_err\_dest@{loop\_err\_dest}!interface.h@{interface.h}}
+\doxysubsubsection{\texorpdfstring{loop\_err\_dest()}{loop\_err\_dest()}}
+{\footnotesize\ttfamily void loop\+\_\+err\+\_\+dest (\begin{DoxyParamCaption}\item[{char $\ast$}]{path,  }\item[{int}]{b\+\_\+overwrite }\end{DoxyParamCaption})}
+
+Fonction qui prend l\textquotesingle{}input d\textquotesingle{}un utilisateur et qui va boucler tant qu\textquotesingle{}on a pas un chemin utilisable pour la lecture d\textquotesingle{}un fichier source ~\newline
+Cette fonction qui devrait etre remplacé par loop\+\_\+err\+\_\+file dans le futur 
+\begin{DoxyParams}{Parameters}
+{\em path} & la premiere valeure passé par l\textquotesingle{}utilisateur \\
+\hline
+{\em b\+\_\+overwrite} & parametre qui va nous permettre de savoir si on peut ecraser un fichier deja existant ou non \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 68 of file interface.\+c.
+
+\mbox{\Hypertarget{interface_8h_a631f3956b702bcc55f7e3ab97958b965}\label{interface_8h_a631f3956b702bcc55f7e3ab97958b965}} 
+\index{interface.h@{interface.h}!loop\_err\_file@{loop\_err\_file}}
+\index{loop\_err\_file@{loop\_err\_file}!interface.h@{interface.h}}
+\doxysubsubsection{\texorpdfstring{loop\_err\_file()}{loop\_err\_file()}}
+{\footnotesize\ttfamily void loop\+\_\+err\+\_\+file (\begin{DoxyParamCaption}\item[{char $\ast$}]{path,  }\item[{char $\ast$}]{filename,  }\item[{char $\ast$}]{mode }\end{DoxyParamCaption})}
+
+Fonction qui prend l\textquotesingle{}input d\textquotesingle{}un utilisateur et qui va boucler tant qu\textquotesingle{}on a pas un chemin utilisable pour la lecture d\textquotesingle{}un fichier source 
+\begin{DoxyParams}{Parameters}
+{\em path} & la premiere valeur entrée par l\textquotesingle{}utilisateur \\
+\hline
+{\em filename} & valeur qui devait me permettre de traiter le fichier source et destination dans la meme fonction \\
+\hline
+{\em mode} & chaine de caracteres qui va etre passé à fopen (\char`\"{}rb\char`\"{}/\char`\"{}wb\char`\"{}) \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 55 of file interface.\+c.
+
+\mbox{\Hypertarget{interface_8h_ae976803a19b1d9133e25b5e47da21caa}\label{interface_8h_ae976803a19b1d9133e25b5e47da21caa}} 
+\index{interface.h@{interface.h}!print\_sep@{print\_sep}}
+\index{print\_sep@{print\_sep}!interface.h@{interface.h}}
+\doxysubsubsection{\texorpdfstring{print\_sep()}{print\_sep()}}
+{\footnotesize\ttfamily void print\+\_\+sep (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Fonction qui me serre a separer l\textquotesingle{}affichage des differents traitement. 
+
+
+
+Definition at line 5 of file interface.\+c.
+
+\mbox{\Hypertarget{interface_8h_a6fd581aa5621803b0e6f40c8147eeb03}\label{interface_8h_a6fd581aa5621803b0e6f40c8147eeb03}} 
+\index{interface.h@{interface.h}!read\_file@{read\_file}}
+\index{read\_file@{read\_file}!interface.h@{interface.h}}
+\doxysubsubsection{\texorpdfstring{read\_file()}{read\_file()}}
+{\footnotesize\ttfamily int read\+\_\+file (\begin{DoxyParamCaption}\item[{FILE $\ast$$\ast$}]{fp,  }\item[{char $\ast$}]{out,  }\item[{int}]{len }\end{DoxyParamCaption})}
+
+Fonction qui va lire la une taille fix de caracteres à partir du fichier, et va la mettre dans out 
+\begin{DoxyParams}{Parameters}
+{\em fp} & double pointeur vers le fichier, car on appele fclose à l\textquotesingle{}interieur \\
+\hline
+{\em out} & tableau qui va recevoir le resultat de la lecture \\
+\hline
+{\em len} & le nombre de caracteres qu\textquotesingle{}on voudrait lire \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+le nombre de caracteres qu\textquotesingle{}on a pu lire (pas forcement egal à len) 
+\end{DoxyReturn}
+
+
+Definition at line 21 of file interface.\+c.
+
+\mbox{\Hypertarget{interface_8h_a3ca769819b8881bbae4eacb4c69d259e}\label{interface_8h_a3ca769819b8881bbae4eacb4c69d259e}} 
+\index{interface.h@{interface.h}!save\_file@{save\_file}}
+\index{save\_file@{save\_file}!interface.h@{interface.h}}
+\doxysubsubsection{\texorpdfstring{save\_file()}{save\_file()}}
+{\footnotesize\ttfamily int save\+\_\+file (\begin{DoxyParamCaption}\item[{char $\ast$}]{text\+\_\+crypt,  }\item[{int}]{len,  }\item[{FILE $\ast$$\ast$}]{fp\+\_\+out }\end{DoxyParamCaption})}
+
+Fonction qui permet de sauvegarder un tableau de char dans un fichier 
+\begin{DoxyParams}{Parameters}
+{\em text\+\_\+crypt} & tableau à enregistrer \\
+\hline
+{\em len} & taile du tableau \\
+\hline
+{\em fp\+\_\+out} & double pointeur vers le fichier. On ferme le fichier apres traitement \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 si l\textquotesingle{}ecriture est réussie, sinon le nombre de caracteres qu\textquotesingle{}on a pu ecrire. 
+\end{DoxyReturn}
+
+
+Definition at line 35 of file interface.\+c.
+

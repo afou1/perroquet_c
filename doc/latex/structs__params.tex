@@ -1,0 +1,156 @@
+\hypertarget{structs__params}{}\doxysection{s\+\_\+params Struct Reference}
+\label{structs__params}\index{s\_params@{s\_params}}
+
+
+{\ttfamily \#include $<$interface.\+h$>$}
+
+\doxysubsection*{Data Fields}
+\begin{DoxyCompactItemize}
+\item 
+FILE $\ast$ \mbox{\hyperlink{structs__params_af275262f3b4b05d30be6f80828ad84fd}{fp\+\_\+source}}
+\item 
+int \mbox{\hyperlink{structs__params_a1b3aa46e53bf3c6301ec0d907d093d25}{size\+\_\+source}}
+\item 
+char \mbox{\hyperlink{structs__params_a265bf1b761ae2e70f20f9dd80fbe6d9b}{path\+\_\+source}} \mbox{[}FILENAME\+\_\+\+MAX\mbox{]}
+\item 
+FILE $\ast$ \mbox{\hyperlink{structs__params_adf52f374e35258ed8629f954eed2fe1b}{fp\+\_\+dest}}
+\item 
+char \mbox{\hyperlink{structs__params_a44fd37690d9102ce29d2807299e66069}{path\+\_\+destination}} \mbox{[}FILENAME\+\_\+\+MAX\mbox{]}
+\item 
+int \mbox{\hyperlink{structs__params_adc70d4e84269910476dae49835229efb}{b\+\_\+dest}}
+\item 
+char \mbox{\hyperlink{structs__params_af79f73bbfd01f5d3dbfaa688e97fdf0a}{cle}} \mbox{[}\mbox{\hyperlink{interface_8h_a73e0a05fefa924bcbf416fe6b3a67b13}{TAILLE\+\_\+\+MAX\+\_\+\+CLE}}\mbox{]}
+\item 
+int \mbox{\hyperlink{structs__params_a8f7fd22436a8ce9d0c5d10f5ab288f51}{size\+\_\+cle}}
+\item 
+int \mbox{\hyperlink{structs__params_a1717a9535b04cf377754eab8aac93de9}{mode\+\_\+chiffrement}}
+\item 
+int \mbox{\hyperlink{structs__params_a0ce56a692ce68929b56356d17208ba42}{keep}}
+\item 
+int \mbox{\hyperlink{structs__params_a8cb750b77f14669ceaeae0f8976ee82c}{b\+\_\+overwrite}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line 27 of file interface.\+h.
+
+
+
+\doxysubsection{Field Documentation}
+\mbox{\Hypertarget{structs__params_adc70d4e84269910476dae49835229efb}\label{structs__params_adc70d4e84269910476dae49835229efb}} 
+\index{s\_params@{s\_params}!b\_dest@{b\_dest}}
+\index{b\_dest@{b\_dest}!s\_params@{s\_params}}
+\doxysubsubsection{\texorpdfstring{b\_dest}{b\_dest}}
+{\footnotesize\ttfamily int b\+\_\+dest}
+
+flag que j\textquotesingle{}utilise que l\textquotesingle{}etat de la valeur du fichier de sortie (si le fichier existe deja vs on peut le creer par exemple) 
+
+Definition at line 33 of file interface.\+h.
+
+\mbox{\Hypertarget{structs__params_a8cb750b77f14669ceaeae0f8976ee82c}\label{structs__params_a8cb750b77f14669ceaeae0f8976ee82c}} 
+\index{s\_params@{s\_params}!b\_overwrite@{b\_overwrite}}
+\index{b\_overwrite@{b\_overwrite}!s\_params@{s\_params}}
+\doxysubsubsection{\texorpdfstring{b\_overwrite}{b\_overwrite}}
+{\footnotesize\ttfamily int b\+\_\+overwrite}
+
+valeur qui devrait me permettre de savoir si l\textquotesingle{}utilisateur est d\textquotesingle{}accord pour eccraser un fichier deja existant et le remplacer par le resultat de notre traitement 
+
+Definition at line 38 of file interface.\+h.
+
+\mbox{\Hypertarget{structs__params_af79f73bbfd01f5d3dbfaa688e97fdf0a}\label{structs__params_af79f73bbfd01f5d3dbfaa688e97fdf0a}} 
+\index{s\_params@{s\_params}!cle@{cle}}
+\index{cle@{cle}!s\_params@{s\_params}}
+\doxysubsubsection{\texorpdfstring{cle}{cle}}
+{\footnotesize\ttfamily char cle\mbox{[}\mbox{\hyperlink{interface_8h_a73e0a05fefa924bcbf416fe6b3a67b13}{TAILLE\+\_\+\+MAX\+\_\+\+CLE}}\mbox{]}}
+
+la cle de chiffrement, on prend la taille max defini dans \mbox{\hyperlink{interface_8h}{interface.\+h}} 
+
+Definition at line 34 of file interface.\+h.
+
+\mbox{\Hypertarget{structs__params_adf52f374e35258ed8629f954eed2fe1b}\label{structs__params_adf52f374e35258ed8629f954eed2fe1b}} 
+\index{s\_params@{s\_params}!fp\_dest@{fp\_dest}}
+\index{fp\_dest@{fp\_dest}!s\_params@{s\_params}}
+\doxysubsubsection{\texorpdfstring{fp\_dest}{fp\_dest}}
+{\footnotesize\ttfamily FILE$\ast$ fp\+\_\+dest}
+
+pointeur pour le fichier destination 
+
+Definition at line 31 of file interface.\+h.
+
+\mbox{\Hypertarget{structs__params_af275262f3b4b05d30be6f80828ad84fd}\label{structs__params_af275262f3b4b05d30be6f80828ad84fd}} 
+\index{s\_params@{s\_params}!fp\_source@{fp\_source}}
+\index{fp\_source@{fp\_source}!s\_params@{s\_params}}
+\doxysubsubsection{\texorpdfstring{fp\_source}{fp\_source}}
+{\footnotesize\ttfamily FILE$\ast$ fp\+\_\+source}
+
+pointeur pour le fichier source 
+
+Definition at line 28 of file interface.\+h.
+
+\mbox{\Hypertarget{structs__params_a0ce56a692ce68929b56356d17208ba42}\label{structs__params_a0ce56a692ce68929b56356d17208ba42}} 
+\index{s\_params@{s\_params}!keep@{keep}}
+\index{keep@{keep}!s\_params@{s\_params}}
+\doxysubsubsection{\texorpdfstring{keep}{keep}}
+{\footnotesize\ttfamily int keep}
+
+valeur qui me permet de savoir si je dois supprimer le fichier source 
+
+Definition at line 37 of file interface.\+h.
+
+\mbox{\Hypertarget{structs__params_a1717a9535b04cf377754eab8aac93de9}\label{structs__params_a1717a9535b04cf377754eab8aac93de9}} 
+\index{s\_params@{s\_params}!mode\_chiffrement@{mode\_chiffrement}}
+\index{mode\_chiffrement@{mode\_chiffrement}!s\_params@{s\_params}}
+\doxysubsubsection{\texorpdfstring{mode\_chiffrement}{mode\_chiffrement}}
+{\footnotesize\ttfamily int mode\+\_\+chiffrement}
+
+valeur qui me permet de savoir si l\textquotesingle{}utilsateur essaie de chiffrer ou dechiffrer le fichier en input 
+
+Definition at line 36 of file interface.\+h.
+
+\mbox{\Hypertarget{structs__params_a44fd37690d9102ce29d2807299e66069}\label{structs__params_a44fd37690d9102ce29d2807299e66069}} 
+\index{s\_params@{s\_params}!path\_destination@{path\_destination}}
+\index{path\_destination@{path\_destination}!s\_params@{s\_params}}
+\doxysubsubsection{\texorpdfstring{path\_destination}{path\_destination}}
+{\footnotesize\ttfamily char path\+\_\+destination\mbox{[}FILENAME\+\_\+\+MAX\mbox{]}}
+
+chemin du fichier destination 
+
+Definition at line 32 of file interface.\+h.
+
+\mbox{\Hypertarget{structs__params_a265bf1b761ae2e70f20f9dd80fbe6d9b}\label{structs__params_a265bf1b761ae2e70f20f9dd80fbe6d9b}} 
+\index{s\_params@{s\_params}!path\_source@{path\_source}}
+\index{path\_source@{path\_source}!s\_params@{s\_params}}
+\doxysubsubsection{\texorpdfstring{path\_source}{path\_source}}
+{\footnotesize\ttfamily char path\+\_\+source\mbox{[}FILENAME\+\_\+\+MAX\mbox{]}}
+
+chemin du fichier source, on prend la taille max definie dans stdio\+\_\+lim.\+h 
+
+Definition at line 30 of file interface.\+h.
+
+\mbox{\Hypertarget{structs__params_a8f7fd22436a8ce9d0c5d10f5ab288f51}\label{structs__params_a8f7fd22436a8ce9d0c5d10f5ab288f51}} 
+\index{s\_params@{s\_params}!size\_cle@{size\_cle}}
+\index{size\_cle@{size\_cle}!s\_params@{s\_params}}
+\doxysubsubsection{\texorpdfstring{size\_cle}{size\_cle}}
+{\footnotesize\ttfamily int size\+\_\+cle}
+
+la taille de la chaine apres lecture de l\textquotesingle{}input de l\textquotesingle{}utilisateur (en utilsant strlen dans ce cas la) 
+
+Definition at line 35 of file interface.\+h.
+
+\mbox{\Hypertarget{structs__params_a1b3aa46e53bf3c6301ec0d907d093d25}\label{structs__params_a1b3aa46e53bf3c6301ec0d907d093d25}} 
+\index{s\_params@{s\_params}!size\_source@{size\_source}}
+\index{size\_source@{size\_source}!s\_params@{s\_params}}
+\doxysubsubsection{\texorpdfstring{size\_source}{size\_source}}
+{\footnotesize\ttfamily int size\+\_\+source}
+
+Taille du fichier source en octets 
+
+Definition at line 29 of file interface.\+h.
+
+
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{interface_8h}{interface.\+h}}\end{DoxyCompactItemize}

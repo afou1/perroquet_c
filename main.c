@@ -1,6 +1,8 @@
 #include "crypt.h"
 #include "interface.h"
-
+/*
+ * perroquet version 0.0.1
+ */
 const char *argp_program_bug_address = "boukhatem.abderraouf@gmail.com";
 const char *argp_program_version = "0.0.1";
 
