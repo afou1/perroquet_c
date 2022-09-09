@@ -11,7 +11,7 @@
 \begin{DoxyCompactItemize}
 \item 
 struct \mbox{\hyperlink{structs__params}{s\+\_\+params}}
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Structure qui contient toutes les infromations pour definir le fonctionnement du programme. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Macros}
 \begin{DoxyCompactItemize}
 \item 
@@ -27,23 +27,34 @@ struct \mbox{\hyperlink{structs__params}{s\+\_\+params}}
 \begin{DoxyCompactItemize}
 \item 
 void \mbox{\hyperlink{interface_8h_ae976803a19b1d9133e25b5e47da21caa}{print\+\_\+sep}} ()
-\begin{DoxyCompactList}\small\item\em Fonction qui me serre a separer l\textquotesingle{}affichage des differents traitement. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Fonction qui me serre a separer l\textquotesingle{}affichage des differents traitements. \end{DoxyCompactList}\item 
 int \mbox{\hyperlink{interface_8h_aed475c1cd069781375bfe2e2f3ef8d83}{load\+\_\+file}} (char $\ast$path, FILE $\ast$$\ast$fp)
-\item 
+\begin{DoxyCompactList}\small\item\em Fonction qui va charger un fichier à partir d\textquotesingle{}un chemin. \end{DoxyCompactList}\item 
 int \mbox{\hyperlink{interface_8h_a6fd581aa5621803b0e6f40c8147eeb03}{read\+\_\+file}} (FILE $\ast$$\ast$fp, char $\ast$out, int len)
-\item 
+\begin{DoxyCompactList}\small\item\em Fonction qui va lire la une taille fix de caractères à partir du fichier, et va la mettre dans out. \end{DoxyCompactList}\item 
 int \mbox{\hyperlink{interface_8h_a3ca769819b8881bbae4eacb4c69d259e}{save\+\_\+file}} (char $\ast$text\+\_\+crypt, int len, FILE $\ast$$\ast$fp\+\_\+out)
-\item 
+\begin{DoxyCompactList}\small\item\em Fonction qui permet de sauvegarder un tableau de char dans un fichier. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{interface_8h_ad98ceaa9822eec3bf7010d3f18dd87b0}{init\+\_\+params}} (\mbox{\hyperlink{structs__params}{s\+\_\+params}} $\ast$params)
-\item 
+\begin{DoxyCompactList}\small\item\em initialise les paramètres/fonctionnement par default du programme. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{interface_8h_a631f3956b702bcc55f7e3ab97958b965}{loop\+\_\+err\+\_\+file}} (char $\ast$path, char $\ast$filename, char $\ast$mode)
-\item 
+\begin{DoxyCompactList}\small\item\em Fonction qui prend l\textquotesingle{}input d\textquotesingle{}un utilisateur et qui va boucler tant qu\textquotesingle{}on a pas un chemin utilisable pour la lecture d\textquotesingle{}un fichier source. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{interface_8h_a4de6a28bbd6f0151d0ef33ef7667753b}{loop\+\_\+err\+\_\+dest}} (char $\ast$path, int b\+\_\+overwrite)
-\item 
+\begin{DoxyCompactList}\small\item\em Fonction qui prend l\textquotesingle{}input d\textquotesingle{}un utilisateur et qui va boucler tant qu\textquotesingle{}on a pas un chemin utilisable pour la lecture d\textquotesingle{}un fichier source ~\newline
+Cette fonction qui devrait etre remplacé par loop\+\_\+err\+\_\+file dans le futur. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{interface_8h_a7723fee1197bd96dc84f5a76eecfec39}{load\+\_\+params}} (int argc, char $\ast$$\ast$argv, \mbox{\hyperlink{structs__params}{s\+\_\+params}} $\ast$params)
-\item 
+\begin{DoxyCompactList}\small\item\em Fonction d\textquotesingle{}entré pour l\textquotesingle{}interface, elle va charger tout les parameteres necessaire à l\textquotesingle{}execution du programme, en lisant les arguments passés et en interagissant avec l\textquotesingle{}utilisateur. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{interface_8h_a34c85c8a32be6618b902ad4ddc56e62b}{close\+\_\+everything}} (\mbox{\hyperlink{structs__params}{s\+\_\+params}} $\ast$params)
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Fonction qui devrait permettre de fermer les fichier dans le cas d\textquotesingle{}une sortie soudaine à cause d\textquotesingle{}une erreure. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{interface_8h_a43544e99aa687b28793c83a6b4a7e2d9}{check\+\_\+mode}} (char $\ast$arg, \mbox{\hyperlink{structs__params}{s\+\_\+params}} $\ast$params)
+\begin{DoxyCompactList}\small\item\em Fonction qui permet juste de voir si le premier argument passer est la definition du mode d\textquotesingle{}execution (crypt/decrypt) \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{interface_8h_a7517eb7e51217904f73a94f38792c29a}{load\+\_\+source}} (\mbox{\hyperlink{structs__params}{s\+\_\+params}} $\ast$params)
+\begin{DoxyCompactList}\small\item\em Fonction pour le chargement du fichier source, dans le cas ou il n\textquotesingle{}a pas ete passé en argument. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{interface_8h_a839b8969272e433d9c23993f900c0d7b}{load\+\_\+pass}} (\mbox{\hyperlink{structs__params}{s\+\_\+params}} $\ast$params)
+\begin{DoxyCompactList}\small\item\em Fonction pour le chargement du fichier de mot de passe, ou lecture direct en entrée. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{interface_8h_a1315dbb67b9b5e5020ab363ccfdff827}{load\+\_\+dest}} (\mbox{\hyperlink{structs__params}{s\+\_\+params}} $\ast$params)
+\begin{DoxyCompactList}\small\item\em Fonction pour le chargement du fichier destination, dans le cas ou il n\textquotesingle{}a pas ete passé en argument. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{interface_8h_a4cae80ccb09c2361f6222ccb951f1371}{load\+\_\+mode}} (\mbox{\hyperlink{structs__params}{s\+\_\+params}} $\ast$params)
+\begin{DoxyCompactList}\small\item\em Fonction pour le selection du mode d\textquotesingle{}execution (crypt/decrypt) selon les arguments, ou en demandant directement en entrée. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Macro Definition Documentation}
@@ -90,13 +101,38 @@ Definition at line 20 of file interface.\+h.
 
 
 \doxysubsection{Function Documentation}
+\mbox{\Hypertarget{interface_8h_a43544e99aa687b28793c83a6b4a7e2d9}\label{interface_8h_a43544e99aa687b28793c83a6b4a7e2d9}} 
+\index{interface.h@{interface.h}!check\_mode@{check\_mode}}
+\index{check\_mode@{check\_mode}!interface.h@{interface.h}}
+\doxysubsubsection{\texorpdfstring{check\_mode()}{check\_mode()}}
+{\footnotesize\ttfamily void check\+\_\+mode (\begin{DoxyParamCaption}\item[{char $\ast$}]{arg,  }\item[{\mbox{\hyperlink{structs__params}{s\+\_\+params}} $\ast$}]{params }\end{DoxyParamCaption})}
+
+
+
+Fonction qui permet juste de voir si le premier argument passer est la definition du mode d\textquotesingle{}execution (crypt/decrypt) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em arg} & le premier argument passé à notre porgramme, apres son nom \\
+\hline
+{\em params} & les parametres de notre programme \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 164 of file interface.\+c.
+
 \mbox{\Hypertarget{interface_8h_a34c85c8a32be6618b902ad4ddc56e62b}\label{interface_8h_a34c85c8a32be6618b902ad4ddc56e62b}} 
 \index{interface.h@{interface.h}!close\_everything@{close\_everything}}
 \index{close\_everything@{close\_everything}!interface.h@{interface.h}}
 \doxysubsubsection{\texorpdfstring{close\_everything()}{close\_everything()}}
 {\footnotesize\ttfamily void close\+\_\+everything (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structs__params}{s\+\_\+params}} $\ast$}]{params }\end{DoxyParamCaption})}
 
-Fonction qui devrait permettre de fermer les fichier dans le cas d\textquotesingle{}une sortie soudaine à cause d\textquotesingle{}une erreure 
+
+
+Fonction qui devrait permettre de fermer les fichier dans le cas d\textquotesingle{}une sortie soudaine à cause d\textquotesingle{}une erreure. 
+
+
 \begin{DoxyParams}{Parameters}
 {\em params} & Les parametres du programme \\
 \hline
@@ -111,7 +147,11 @@ Definition at line 91 of file interface.\+c.
 \doxysubsubsection{\texorpdfstring{init\_params()}{init\_params()}}
 {\footnotesize\ttfamily void init\+\_\+params (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structs__params}{s\+\_\+params}} $\ast$}]{params }\end{DoxyParamCaption})}
 
-initilise les parameteres/fonctionnement par default du programme. 
+
+
+initialise les paramètres/fonctionnement par default du programme. 
+
+/!
 \begin{DoxyParams}{Parameters}
 {\em params} & \\
 \hline
@@ -120,26 +160,68 @@ initilise les parameteres/fonctionnement par default du programme.
 
 Definition at line 44 of file interface.\+c.
 
+\mbox{\Hypertarget{interface_8h_a1315dbb67b9b5e5020ab363ccfdff827}\label{interface_8h_a1315dbb67b9b5e5020ab363ccfdff827}} 
+\index{interface.h@{interface.h}!load\_dest@{load\_dest}}
+\index{load\_dest@{load\_dest}!interface.h@{interface.h}}
+\doxysubsubsection{\texorpdfstring{load\_dest()}{load\_dest()}}
+{\footnotesize\ttfamily void load\+\_\+dest (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structs__params}{s\+\_\+params}} $\ast$}]{params }\end{DoxyParamCaption})}
+
+
+
+Fonction pour le chargement du fichier destination, dans le cas ou il n\textquotesingle{}a pas ete passé en argument. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em params} & parameteres du programme \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 227 of file interface.\+c.
+
 \mbox{\Hypertarget{interface_8h_aed475c1cd069781375bfe2e2f3ef8d83}\label{interface_8h_aed475c1cd069781375bfe2e2f3ef8d83}} 
 \index{interface.h@{interface.h}!load\_file@{load\_file}}
 \index{load\_file@{load\_file}!interface.h@{interface.h}}
 \doxysubsubsection{\texorpdfstring{load\_file()}{load\_file()}}
 {\footnotesize\ttfamily int load\+\_\+file (\begin{DoxyParamCaption}\item[{char $\ast$}]{path,  }\item[{FILE $\ast$$\ast$}]{fp }\end{DoxyParamCaption})}
 
-Fonction qui va charger un fichier à partir d\textquotesingle{}un chemin 
+
+
+Fonction qui va charger un fichier à partir d\textquotesingle{}un chemin. 
+
+
 \begin{DoxyParams}{Parameters}
-{\em path} & tableau de char qui represente l\textquotesingle{}emplacement du fichier \\
+{\em path} & tableau de char qui représente l\textquotesingle{}emplacement du fichier \\
 \hline
-{\em fp} & double pointeur vers le fichier, on a besoin du double poineur pour changer ca valeur avec fopen \\
+{\em fp} & double pointeur vers le fichier, on a besoin du double pointeur pour changer ca valeur avec fopen \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-si on a pu ouvrir le fichier, une valeur positive qui represente la taille du fichier en octets ~\newline
+si on a pu ouvrir le fichier, une valeur positive qui représente la taille du fichier en octets ~\newline
  sinon -\/1 
 \end{DoxyReturn}
 
 
 Definition at line 10 of file interface.\+c.
+
+\mbox{\Hypertarget{interface_8h_a4cae80ccb09c2361f6222ccb951f1371}\label{interface_8h_a4cae80ccb09c2361f6222ccb951f1371}} 
+\index{interface.h@{interface.h}!load\_mode@{load\_mode}}
+\index{load\_mode@{load\_mode}!interface.h@{interface.h}}
+\doxysubsubsection{\texorpdfstring{load\_mode()}{load\_mode()}}
+{\footnotesize\ttfamily void load\+\_\+mode (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structs__params}{s\+\_\+params}} $\ast$}]{params }\end{DoxyParamCaption})}
+
+
+
+Fonction pour le selection du mode d\textquotesingle{}execution (crypt/decrypt) selon les arguments, ou en demandant directement en entrée. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em params} & parameteres du programme \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 244 of file interface.\+c.
 
 \mbox{\Hypertarget{interface_8h_a7723fee1197bd96dc84f5a76eecfec39}\label{interface_8h_a7723fee1197bd96dc84f5a76eecfec39}} 
 \index{interface.h@{interface.h}!load\_params@{load\_params}}
@@ -147,7 +229,11 @@ Definition at line 10 of file interface.\+c.
 \doxysubsubsection{\texorpdfstring{load\_params()}{load\_params()}}
 {\footnotesize\ttfamily void load\+\_\+params (\begin{DoxyParamCaption}\item[{int}]{argc,  }\item[{char $\ast$$\ast$}]{argv,  }\item[{\mbox{\hyperlink{structs__params}{s\+\_\+params}} $\ast$}]{params }\end{DoxyParamCaption})}
 
-Fonction d\textquotesingle{}entré pour l\textquotesingle{}interface, elle va charger tout les parameteres necessaire à l\textquotesingle{}execution du programme, en lisant les arguments passés et en interagissant avec l\textquotesingle{}utilisateur 
+
+
+Fonction d\textquotesingle{}entré pour l\textquotesingle{}interface, elle va charger tout les parameteres necessaire à l\textquotesingle{}execution du programme, en lisant les arguments passés et en interagissant avec l\textquotesingle{}utilisateur. 
+
+
 \begin{DoxyParams}{Parameters}
 {\em argc} & nobmre d\textquotesingle{}arguments passés au programme \\
 \hline
@@ -158,7 +244,45 @@ Fonction d\textquotesingle{}entré pour l\textquotesingle{}interface, elle va ch
 \end{DoxyParams}
 
 
-Definition at line 258 of file interface.\+c.
+Definition at line 264 of file interface.\+c.
+
+\mbox{\Hypertarget{interface_8h_a839b8969272e433d9c23993f900c0d7b}\label{interface_8h_a839b8969272e433d9c23993f900c0d7b}} 
+\index{interface.h@{interface.h}!load\_pass@{load\_pass}}
+\index{load\_pass@{load\_pass}!interface.h@{interface.h}}
+\doxysubsubsection{\texorpdfstring{load\_pass()}{load\_pass()}}
+{\footnotesize\ttfamily void load\+\_\+pass (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structs__params}{s\+\_\+params}} $\ast$}]{params }\end{DoxyParamCaption})}
+
+
+
+Fonction pour le chargement du fichier de mot de passe, ou lecture direct en entrée. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em params} & parameteres du programme \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 184 of file interface.\+c.
+
+\mbox{\Hypertarget{interface_8h_a7517eb7e51217904f73a94f38792c29a}\label{interface_8h_a7517eb7e51217904f73a94f38792c29a}} 
+\index{interface.h@{interface.h}!load\_source@{load\_source}}
+\index{load\_source@{load\_source}!interface.h@{interface.h}}
+\doxysubsubsection{\texorpdfstring{load\_source()}{load\_source()}}
+{\footnotesize\ttfamily void load\+\_\+source (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structs__params}{s\+\_\+params}} $\ast$}]{params }\end{DoxyParamCaption})}
+
+
+
+Fonction pour le chargement du fichier source, dans le cas ou il n\textquotesingle{}a pas ete passé en argument. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em params} & parameteres du programme \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 172 of file interface.\+c.
 
 \mbox{\Hypertarget{interface_8h_a4de6a28bbd6f0151d0ef33ef7667753b}\label{interface_8h_a4de6a28bbd6f0151d0ef33ef7667753b}} 
 \index{interface.h@{interface.h}!loop\_err\_dest@{loop\_err\_dest}}
@@ -166,8 +290,12 @@ Definition at line 258 of file interface.\+c.
 \doxysubsubsection{\texorpdfstring{loop\_err\_dest()}{loop\_err\_dest()}}
 {\footnotesize\ttfamily void loop\+\_\+err\+\_\+dest (\begin{DoxyParamCaption}\item[{char $\ast$}]{path,  }\item[{int}]{b\+\_\+overwrite }\end{DoxyParamCaption})}
 
+
+
 Fonction qui prend l\textquotesingle{}input d\textquotesingle{}un utilisateur et qui va boucler tant qu\textquotesingle{}on a pas un chemin utilisable pour la lecture d\textquotesingle{}un fichier source ~\newline
-Cette fonction qui devrait etre remplacé par loop\+\_\+err\+\_\+file dans le futur 
+Cette fonction qui devrait etre remplacé par loop\+\_\+err\+\_\+file dans le futur. 
+
+
 \begin{DoxyParams}{Parameters}
 {\em path} & la premiere valeure passé par l\textquotesingle{}utilisateur \\
 \hline
@@ -184,7 +312,11 @@ Definition at line 68 of file interface.\+c.
 \doxysubsubsection{\texorpdfstring{loop\_err\_file()}{loop\_err\_file()}}
 {\footnotesize\ttfamily void loop\+\_\+err\+\_\+file (\begin{DoxyParamCaption}\item[{char $\ast$}]{path,  }\item[{char $\ast$}]{filename,  }\item[{char $\ast$}]{mode }\end{DoxyParamCaption})}
 
-Fonction qui prend l\textquotesingle{}input d\textquotesingle{}un utilisateur et qui va boucler tant qu\textquotesingle{}on a pas un chemin utilisable pour la lecture d\textquotesingle{}un fichier source 
+
+
+Fonction qui prend l\textquotesingle{}input d\textquotesingle{}un utilisateur et qui va boucler tant qu\textquotesingle{}on a pas un chemin utilisable pour la lecture d\textquotesingle{}un fichier source. 
+
+
 \begin{DoxyParams}{Parameters}
 {\em path} & la premiere valeur entrée par l\textquotesingle{}utilisateur \\
 \hline
@@ -205,7 +337,7 @@ Definition at line 55 of file interface.\+c.
 
 
 
-Fonction qui me serre a separer l\textquotesingle{}affichage des differents traitement. 
+Fonction qui me serre a separer l\textquotesingle{}affichage des differents traitements. 
 
 
 
@@ -217,17 +349,21 @@ Definition at line 5 of file interface.\+c.
 \doxysubsubsection{\texorpdfstring{read\_file()}{read\_file()}}
 {\footnotesize\ttfamily int read\+\_\+file (\begin{DoxyParamCaption}\item[{FILE $\ast$$\ast$}]{fp,  }\item[{char $\ast$}]{out,  }\item[{int}]{len }\end{DoxyParamCaption})}
 
-Fonction qui va lire la une taille fix de caracteres à partir du fichier, et va la mettre dans out 
+
+
+Fonction qui va lire la une taille fix de caractères à partir du fichier, et va la mettre dans out. 
+
+
 \begin{DoxyParams}{Parameters}
-{\em fp} & double pointeur vers le fichier, car on appele fclose à l\textquotesingle{}interieur \\
+{\em fp} & double pointeur vers le fichier, car on appele fclose à l\textquotesingle{}intérieur \\
 \hline
-{\em out} & tableau qui va recevoir le resultat de la lecture \\
+{\em out} & tableau qui va recevoir le résultat de la lecture \\
 \hline
-{\em len} & le nombre de caracteres qu\textquotesingle{}on voudrait lire \\
+{\em len} & le nombre de caractères qu\textquotesingle{}on voudrait lire \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-le nombre de caracteres qu\textquotesingle{}on a pu lire (pas forcement egal à len) 
+le nombre de caractères qu\textquotesingle{}on a pu lire (pas forcement égal à len) 
 \end{DoxyReturn}
 
 
@@ -239,17 +375,21 @@ Definition at line 21 of file interface.\+c.
 \doxysubsubsection{\texorpdfstring{save\_file()}{save\_file()}}
 {\footnotesize\ttfamily int save\+\_\+file (\begin{DoxyParamCaption}\item[{char $\ast$}]{text\+\_\+crypt,  }\item[{int}]{len,  }\item[{FILE $\ast$$\ast$}]{fp\+\_\+out }\end{DoxyParamCaption})}
 
-Fonction qui permet de sauvegarder un tableau de char dans un fichier 
+
+
+Fonction qui permet de sauvegarder un tableau de char dans un fichier. 
+
+
 \begin{DoxyParams}{Parameters}
 {\em text\+\_\+crypt} & tableau à enregistrer \\
 \hline
-{\em len} & taile du tableau \\
+{\em len} & taille du tableau \\
 \hline
 {\em fp\+\_\+out} & double pointeur vers le fichier. On ferme le fichier apres traitement \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-0 si l\textquotesingle{}ecriture est réussie, sinon le nombre de caracteres qu\textquotesingle{}on a pu ecrire. 
+0 si l\textquotesingle{}écriture est réussie, sinon le nombre de caractères qu\textquotesingle{}on a pu écrire. 
 \end{DoxyReturn}
 
 

@@ -9,6 +9,10 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -22,9 +26,9 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">perroquet
-   &#160;<span id="projectnumber">0.0.1</span>
+   &#160;<span id="projectnumber">0.0.1.1</span>
    </div>
-   <div id="projectbrief">chiffrement simple de fichiers txt</div>
+   <div id="projectbrief">Chiffrement simple de fichier txt</div>
   </td>
  </tr>
  </tbody>
@@ -48,6 +52,22 @@ $(function() {
 /* @license-end */</script>
 <div id="main-nav"></div>
 </div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('main_8c_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -98,25 +118,29 @@ $(function() {
 <div class="ttc" id="acrypt_8c_html_a72db0e72110a51eb4ac0a60154555f64"><div class="ttname"><a href="crypt_8c.html#a72db0e72110a51eb4ac0a60154555f64">dechiffrer_f</a></div><div class="ttdeci">void dechiffrer_f(FILE **f_input, FILE **f_output, char *perroquet, int l_text, int l_perroquet)</div><div class="ttdef"><b>Definition:</b> <a href="crypt_8c_source.html#l00035">crypt.c:35</a></div></div>
 <div class="ttc" id="acrypt_8c_html_ac8571841a9cf92ab7840d5d83dab9d87"><div class="ttname"><a href="crypt_8c.html#ac8571841a9cf92ab7840d5d83dab9d87">chiffrer_f</a></div><div class="ttdeci">void chiffrer_f(FILE **f_input, FILE **f_output, char *perroquet, int l_text, int l_perroquet)</div><div class="ttdef"><b>Definition:</b> <a href="crypt_8c_source.html#l00016">crypt.c:16</a></div></div>
 <div class="ttc" id="acrypt_8h_html"><div class="ttname"><a href="crypt_8h.html">crypt.h</a></div></div>
-<div class="ttc" id="ainterface_8c_html_a7723fee1197bd96dc84f5a76eecfec39"><div class="ttname"><a href="interface_8c.html#a7723fee1197bd96dc84f5a76eecfec39">load_params</a></div><div class="ttdeci">void load_params(int argc, char **argv, s_params *params)</div><div class="ttdef"><b>Definition:</b> <a href="interface_8c_source.html#l00258">interface.c:258</a></div></div>
-<div class="ttc" id="ainterface_8c_html_ae976803a19b1d9133e25b5e47da21caa"><div class="ttname"><a href="interface_8c.html#ae976803a19b1d9133e25b5e47da21caa">print_sep</a></div><div class="ttdeci">void print_sep()</div><div class="ttdoc">Fonction qui me serre a separer l'affichage des differents traitement.</div><div class="ttdef"><b>Definition:</b> <a href="interface_8c_source.html#l00005">interface.c:5</a></div></div>
+<div class="ttc" id="ainterface_8c_html_a7723fee1197bd96dc84f5a76eecfec39"><div class="ttname"><a href="interface_8c.html#a7723fee1197bd96dc84f5a76eecfec39">load_params</a></div><div class="ttdeci">void load_params(int argc, char **argv, s_params *params)</div><div class="ttdoc">Fonction d'entré pour l'interface, elle va charger tout les parameteres necessaire à l'execution du p...</div><div class="ttdef"><b>Definition:</b> <a href="interface_8c_source.html#l00264">interface.c:264</a></div></div>
+<div class="ttc" id="ainterface_8c_html_ae976803a19b1d9133e25b5e47da21caa"><div class="ttname"><a href="interface_8c.html#ae976803a19b1d9133e25b5e47da21caa">print_sep</a></div><div class="ttdeci">void print_sep()</div><div class="ttdoc">Fonction qui me serre a separer l'affichage des differents traitements.</div><div class="ttdef"><b>Definition:</b> <a href="interface_8c_source.html#l00005">interface.c:5</a></div></div>
 <div class="ttc" id="ainterface_8h_html"><div class="ttname"><a href="interface_8h.html">interface.h</a></div></div>
 <div class="ttc" id="amain_8c_html_a3c04138a5bfe5d72780bb7e82a18e627"><div class="ttname"><a href="main_8c.html#a3c04138a5bfe5d72780bb7e82a18e627">main</a></div><div class="ttdeci">int main(int argc, char **argv)</div><div class="ttdef"><b>Definition:</b> <a href="main_8c_source.html#l00009">main.c:9</a></div></div>
 <div class="ttc" id="amain_8c_html_a62f73ea01c816f1996aed4c66f57c4fb"><div class="ttname"><a href="main_8c.html#a62f73ea01c816f1996aed4c66f57c4fb">argp_program_version</a></div><div class="ttdeci">const char * argp_program_version</div><div class="ttdef"><b>Definition:</b> <a href="main_8c_source.html#l00007">main.c:7</a></div></div>
 <div class="ttc" id="amain_8c_html_aaa037e59f26a80a8a2e35e6f2364004d"><div class="ttname"><a href="main_8c.html#aaa037e59f26a80a8a2e35e6f2364004d">argp_program_bug_address</a></div><div class="ttdeci">const char * argp_program_bug_address</div><div class="ttdef"><b>Definition:</b> <a href="main_8c_source.html#l00006">main.c:6</a></div></div>
-<div class="ttc" id="astructs__params_html"><div class="ttname"><a href="structs__params.html">s_params</a></div><div class="ttdef"><b>Definition:</b> <a href="interface_8h_source.html#l00027">interface.h:27</a></div></div>
-<div class="ttc" id="astructs__params_html_a0ce56a692ce68929b56356d17208ba42"><div class="ttname"><a href="structs__params.html#a0ce56a692ce68929b56356d17208ba42">s_params::keep</a></div><div class="ttdeci">int keep</div><div class="ttdef"><b>Definition:</b> <a href="interface_8h_source.html#l00037">interface.h:37</a></div></div>
-<div class="ttc" id="astructs__params_html_a1717a9535b04cf377754eab8aac93de9"><div class="ttname"><a href="structs__params.html#a1717a9535b04cf377754eab8aac93de9">s_params::mode_chiffrement</a></div><div class="ttdeci">int mode_chiffrement</div><div class="ttdef"><b>Definition:</b> <a href="interface_8h_source.html#l00036">interface.h:36</a></div></div>
-<div class="ttc" id="astructs__params_html_a1b3aa46e53bf3c6301ec0d907d093d25"><div class="ttname"><a href="structs__params.html#a1b3aa46e53bf3c6301ec0d907d093d25">s_params::size_source</a></div><div class="ttdeci">int size_source</div><div class="ttdef"><b>Definition:</b> <a href="interface_8h_source.html#l00029">interface.h:29</a></div></div>
-<div class="ttc" id="astructs__params_html_a265bf1b761ae2e70f20f9dd80fbe6d9b"><div class="ttname"><a href="structs__params.html#a265bf1b761ae2e70f20f9dd80fbe6d9b">s_params::path_source</a></div><div class="ttdeci">char path_source[FILENAME_MAX]</div><div class="ttdef"><b>Definition:</b> <a href="interface_8h_source.html#l00030">interface.h:30</a></div></div>
-<div class="ttc" id="astructs__params_html_a8f7fd22436a8ce9d0c5d10f5ab288f51"><div class="ttname"><a href="structs__params.html#a8f7fd22436a8ce9d0c5d10f5ab288f51">s_params::size_cle</a></div><div class="ttdeci">int size_cle</div><div class="ttdef"><b>Definition:</b> <a href="interface_8h_source.html#l00035">interface.h:35</a></div></div>
-<div class="ttc" id="astructs__params_html_adf52f374e35258ed8629f954eed2fe1b"><div class="ttname"><a href="structs__params.html#adf52f374e35258ed8629f954eed2fe1b">s_params::fp_dest</a></div><div class="ttdeci">FILE * fp_dest</div><div class="ttdef"><b>Definition:</b> <a href="interface_8h_source.html#l00031">interface.h:31</a></div></div>
-<div class="ttc" id="astructs__params_html_af275262f3b4b05d30be6f80828ad84fd"><div class="ttname"><a href="structs__params.html#af275262f3b4b05d30be6f80828ad84fd">s_params::fp_source</a></div><div class="ttdeci">FILE * fp_source</div><div class="ttdef"><b>Definition:</b> <a href="interface_8h_source.html#l00028">interface.h:28</a></div></div>
-<div class="ttc" id="astructs__params_html_af79f73bbfd01f5d3dbfaa688e97fdf0a"><div class="ttname"><a href="structs__params.html#af79f73bbfd01f5d3dbfaa688e97fdf0a">s_params::cle</a></div><div class="ttdeci">char cle[TAILLE_MAX_CLE]</div><div class="ttdef"><b>Definition:</b> <a href="interface_8h_source.html#l00034">interface.h:34</a></div></div>
+<div class="ttc" id="astructs__params_html"><div class="ttname"><a href="structs__params.html">s_params</a></div><div class="ttdoc">Structure qui contient toutes les infromations pour definir le fonctionnement du programme.</div><div class="ttdef"><b>Definition:</b> <a href="interface_8h_source.html#l00025">interface.h:25</a></div></div>
+<div class="ttc" id="astructs__params_html_a0ce56a692ce68929b56356d17208ba42"><div class="ttname"><a href="structs__params.html#a0ce56a692ce68929b56356d17208ba42">s_params::keep</a></div><div class="ttdeci">int keep</div><div class="ttdef"><b>Definition:</b> <a href="interface_8h_source.html#l00035">interface.h:35</a></div></div>
+<div class="ttc" id="astructs__params_html_a1717a9535b04cf377754eab8aac93de9"><div class="ttname"><a href="structs__params.html#a1717a9535b04cf377754eab8aac93de9">s_params::mode_chiffrement</a></div><div class="ttdeci">int mode_chiffrement</div><div class="ttdef"><b>Definition:</b> <a href="interface_8h_source.html#l00034">interface.h:34</a></div></div>
+<div class="ttc" id="astructs__params_html_a1b3aa46e53bf3c6301ec0d907d093d25"><div class="ttname"><a href="structs__params.html#a1b3aa46e53bf3c6301ec0d907d093d25">s_params::size_source</a></div><div class="ttdeci">int size_source</div><div class="ttdef"><b>Definition:</b> <a href="interface_8h_source.html#l00027">interface.h:27</a></div></div>
+<div class="ttc" id="astructs__params_html_a265bf1b761ae2e70f20f9dd80fbe6d9b"><div class="ttname"><a href="structs__params.html#a265bf1b761ae2e70f20f9dd80fbe6d9b">s_params::path_source</a></div><div class="ttdeci">char path_source[FILENAME_MAX]</div><div class="ttdef"><b>Definition:</b> <a href="interface_8h_source.html#l00028">interface.h:28</a></div></div>
+<div class="ttc" id="astructs__params_html_a8f7fd22436a8ce9d0c5d10f5ab288f51"><div class="ttname"><a href="structs__params.html#a8f7fd22436a8ce9d0c5d10f5ab288f51">s_params::size_cle</a></div><div class="ttdeci">int size_cle</div><div class="ttdef"><b>Definition:</b> <a href="interface_8h_source.html#l00033">interface.h:33</a></div></div>
+<div class="ttc" id="astructs__params_html_adf52f374e35258ed8629f954eed2fe1b"><div class="ttname"><a href="structs__params.html#adf52f374e35258ed8629f954eed2fe1b">s_params::fp_dest</a></div><div class="ttdeci">FILE * fp_dest</div><div class="ttdef"><b>Definition:</b> <a href="interface_8h_source.html#l00029">interface.h:29</a></div></div>
+<div class="ttc" id="astructs__params_html_af275262f3b4b05d30be6f80828ad84fd"><div class="ttname"><a href="structs__params.html#af275262f3b4b05d30be6f80828ad84fd">s_params::fp_source</a></div><div class="ttdeci">FILE * fp_source</div><div class="ttdef"><b>Definition:</b> <a href="interface_8h_source.html#l00026">interface.h:26</a></div></div>
+<div class="ttc" id="astructs__params_html_af79f73bbfd01f5d3dbfaa688e97fdf0a"><div class="ttname"><a href="structs__params.html#af79f73bbfd01f5d3dbfaa688e97fdf0a">s_params::cle</a></div><div class="ttdeci">char cle[TAILLE_MAX_CLE]</div><div class="ttdef"><b>Definition:</b> <a href="interface_8h_source.html#l00032">interface.h:32</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="main_8c.html">main.c</a></li>
+    <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+  </ul>
+</div>
 </body>
 </html>

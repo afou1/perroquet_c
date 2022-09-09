@@ -97,6 +97,12 @@ void close_everything(s_params *params){
     }
 }
 
+//! Fonction requise par la fonction arge_parse. Elle va etre appeler pour chaque argument, elle va ensuite changer les valeurs des parametres du programme selon ce que l'utilisateur entre comme arguments
+
+//! \param key la clé de l'argument, la definition des clés pour chaque argument est faite dans load_params
+//! \param arg valeur passé à l'argument
+//! \param state structure qui contient un ensemble d'information sur l'etat du traitement des parameteres, elle permet aussi de passer nos propres données à parse_opt, avec la structure params
+//! \return retourne une valeur qui indique le bon traitement de l'argument, ou un code d'erreur
 static int parse_opt (int key, char *arg,struct argp_state *state){
     s_params *params = state->input;
     FILE* fp=NULL;

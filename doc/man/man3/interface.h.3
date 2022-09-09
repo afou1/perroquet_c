@@ -1,4 +1,4 @@
-.TH "interface.h" 3 "Fri Sep 9 2022" "Version 0.0.1" "perroquet" \" -*- nroff -*-
+.TH "interface.h" 3 "Fri Sep 9 2022" "Version 0.0.1.1" "perroquet" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -27,6 +27,7 @@ interface.h
 .ti -1c
 .RI "struct \fBs_params\fP"
 .br
+.RI "Structure qui contient toutes les infromations pour definir le fonctionnement du programme\&. "
 .in -1c
 .SS "Macros"
 
@@ -50,31 +51,61 @@ interface.h
 .ti -1c
 .RI "void \fBprint_sep\fP ()"
 .br
-.RI "Fonction qui me serre a separer l'affichage des differents traitement\&. "
+.RI "Fonction qui me serre a separer l'affichage des differents traitements\&. "
 .ti -1c
 .RI "int \fBload_file\fP (char *path, FILE **fp)"
 .br
+.RI "Fonction qui va charger un fichier à partir d'un chemin\&. "
 .ti -1c
 .RI "int \fBread_file\fP (FILE **fp, char *out, int len)"
 .br
+.RI "Fonction qui va lire la une taille fix de caractères à partir du fichier, et va la mettre dans out\&. "
 .ti -1c
 .RI "int \fBsave_file\fP (char *text_crypt, int len, FILE **fp_out)"
 .br
+.RI "Fonction qui permet de sauvegarder un tableau de char dans un fichier\&. "
 .ti -1c
 .RI "void \fBinit_params\fP (\fBs_params\fP *params)"
 .br
+.RI "initialise les paramètres/fonctionnement par default du programme\&. "
 .ti -1c
 .RI "void \fBloop_err_file\fP (char *path, char *filename, char *mode)"
 .br
+.RI "Fonction qui prend l'input d'un utilisateur et qui va boucler tant qu'on a pas un chemin utilisable pour la lecture d'un fichier source\&. "
 .ti -1c
 .RI "void \fBloop_err_dest\fP (char *path, int b_overwrite)"
 .br
+.RI "Fonction qui prend l'input d'un utilisateur et qui va boucler tant qu'on a pas un chemin utilisable pour la lecture d'un fichier source 
+.br
+Cette fonction qui devrait etre remplacé par loop_err_file dans le futur\&. "
 .ti -1c
 .RI "void \fBload_params\fP (int argc, char **argv, \fBs_params\fP *params)"
 .br
+.RI "Fonction d'entré pour l'interface, elle va charger tout les parameteres necessaire à l'execution du programme, en lisant les arguments passés et en interagissant avec l'utilisateur\&. "
 .ti -1c
 .RI "void \fBclose_everything\fP (\fBs_params\fP *params)"
 .br
+.RI "Fonction qui devrait permettre de fermer les fichier dans le cas d'une sortie soudaine à cause d'une erreure\&. "
+.ti -1c
+.RI "void \fBcheck_mode\fP (char *arg, \fBs_params\fP *params)"
+.br
+.RI "Fonction qui permet juste de voir si le premier argument passer est la definition du mode d'execution (crypt/decrypt) "
+.ti -1c
+.RI "void \fBload_source\fP (\fBs_params\fP *params)"
+.br
+.RI "Fonction pour le chargement du fichier source, dans le cas ou il n'a pas ete passé en argument\&. "
+.ti -1c
+.RI "void \fBload_pass\fP (\fBs_params\fP *params)"
+.br
+.RI "Fonction pour le chargement du fichier de mot de passe, ou lecture direct en entrée\&. "
+.ti -1c
+.RI "void \fBload_dest\fP (\fBs_params\fP *params)"
+.br
+.RI "Fonction pour le chargement du fichier destination, dans le cas ou il n'a pas ete passé en argument\&. "
+.ti -1c
+.RI "void \fBload_mode\fP (\fBs_params\fP *params)"
+.br
+.RI "Fonction pour le selection du mode d'execution (crypt/decrypt) selon les arguments, ou en demandant directement en entrée\&. "
 .in -1c
 .SH "Macro Definition Documentation"
 .PP 
@@ -96,8 +127,25 @@ Definition at line 21 of file interface\&.h\&.
 Definition at line 20 of file interface\&.h\&.
 .SH "Function Documentation"
 .PP 
+.SS "void check_mode (char * arg, \fBs_params\fP * params)"
+
+.PP
+Fonction qui permet juste de voir si le premier argument passer est la definition du mode d'execution (crypt/decrypt) 
+.PP
+\fBParameters\fP
+.RS 4
+\fIarg\fP le premier argument passé à notre porgramme, apres son nom 
+.br
+\fIparams\fP les parametres de notre programme 
+.RE
+.PP
+
+.PP
+Definition at line 164 of file interface\&.c\&.
 .SS "void close_everything (\fBs_params\fP * params)"
-Fonction qui devrait permettre de fermer les fichier dans le cas d'une sortie soudaine à cause d'une erreure 
+
+.PP
+Fonction qui devrait permettre de fermer les fichier dans le cas d'une sortie soudaine à cause d'une erreure\&. 
 .PP
 \fBParameters\fP
 .RS 4
@@ -108,7 +156,9 @@ Fonction qui devrait permettre de fermer les fichier dans le cas d'une sortie so
 .PP
 Definition at line 91 of file interface\&.c\&.
 .SS "void init_params (\fBs_params\fP * params)"
-initilise les parameteres/fonctionnement par default du programme\&. 
+
+.PP
+initialise les paramètres/fonctionnement par default du programme\&. /!
 .PP
 \fBParameters\fP
 .RS 4
@@ -118,19 +168,34 @@ initilise les parameteres/fonctionnement par default du programme\&.
 
 .PP
 Definition at line 44 of file interface\&.c\&.
-.SS "int load_file (char * path, FILE ** fp)"
-Fonction qui va charger un fichier à partir d'un chemin 
+.SS "void load_dest (\fBs_params\fP * params)"
+
+.PP
+Fonction pour le chargement du fichier destination, dans le cas ou il n'a pas ete passé en argument\&. 
 .PP
 \fBParameters\fP
 .RS 4
-\fIpath\fP tableau de char qui represente l'emplacement du fichier 
+\fIparams\fP parameteres du programme 
+.RE
+.PP
+
+.PP
+Definition at line 227 of file interface\&.c\&.
+.SS "int load_file (char * path, FILE ** fp)"
+
+.PP
+Fonction qui va charger un fichier à partir d'un chemin\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIpath\fP tableau de char qui représente l'emplacement du fichier 
 .br
-\fIfp\fP double pointeur vers le fichier, on a besoin du double poineur pour changer ca valeur avec fopen 
+\fIfp\fP double pointeur vers le fichier, on a besoin du double pointeur pour changer ca valeur avec fopen 
 .RE
 .PP
 \fBReturns\fP
 .RS 4
-si on a pu ouvrir le fichier, une valeur positive qui represente la taille du fichier en octets 
+si on a pu ouvrir le fichier, une valeur positive qui représente la taille du fichier en octets 
 .br
  sinon -1 
 .RE
@@ -138,8 +203,23 @@ si on a pu ouvrir le fichier, une valeur positive qui represente la taille du fi
 
 .PP
 Definition at line 10 of file interface\&.c\&.
+.SS "void load_mode (\fBs_params\fP * params)"
+
+.PP
+Fonction pour le selection du mode d'execution (crypt/decrypt) selon les arguments, ou en demandant directement en entrée\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIparams\fP parameteres du programme 
+.RE
+.PP
+
+.PP
+Definition at line 244 of file interface\&.c\&.
 .SS "void load_params (int argc, char ** argv, \fBs_params\fP * params)"
-Fonction d'entré pour l'interface, elle va charger tout les parameteres necessaire à l'execution du programme, en lisant les arguments passés et en interagissant avec l'utilisateur 
+
+.PP
+Fonction d'entré pour l'interface, elle va charger tout les parameteres necessaire à l'execution du programme, en lisant les arguments passés et en interagissant avec l'utilisateur\&. 
 .PP
 \fBParameters\fP
 .RS 4
@@ -152,11 +232,39 @@ Fonction d'entré pour l'interface, elle va charger tout les parameteres necessa
 .PP
 
 .PP
-Definition at line 258 of file interface\&.c\&.
+Definition at line 264 of file interface\&.c\&.
+.SS "void load_pass (\fBs_params\fP * params)"
+
+.PP
+Fonction pour le chargement du fichier de mot de passe, ou lecture direct en entrée\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIparams\fP parameteres du programme 
+.RE
+.PP
+
+.PP
+Definition at line 184 of file interface\&.c\&.
+.SS "void load_source (\fBs_params\fP * params)"
+
+.PP
+Fonction pour le chargement du fichier source, dans le cas ou il n'a pas ete passé en argument\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIparams\fP parameteres du programme 
+.RE
+.PP
+
+.PP
+Definition at line 172 of file interface\&.c\&.
 .SS "void loop_err_dest (char * path, int b_overwrite)"
+
+.PP
 Fonction qui prend l'input d'un utilisateur et qui va boucler tant qu'on a pas un chemin utilisable pour la lecture d'un fichier source 
 .br
-Cette fonction qui devrait etre remplacé par loop_err_file dans le futur 
+Cette fonction qui devrait etre remplacé par loop_err_file dans le futur\&. 
 .PP
 \fBParameters\fP
 .RS 4
@@ -169,7 +277,9 @@ Cette fonction qui devrait etre remplacé par loop_err_file dans le futur
 .PP
 Definition at line 68 of file interface\&.c\&.
 .SS "void loop_err_file (char * path, char * filename, char * mode)"
-Fonction qui prend l'input d'un utilisateur et qui va boucler tant qu'on a pas un chemin utilisable pour la lecture d'un fichier source 
+
+.PP
+Fonction qui prend l'input d'un utilisateur et qui va boucler tant qu'on a pas un chemin utilisable pour la lecture d'un fichier source\&. 
 .PP
 \fBParameters\fP
 .RS 4
@@ -186,44 +296,48 @@ Definition at line 55 of file interface\&.c\&.
 .SS "void print_sep ()"
 
 .PP
-Fonction qui me serre a separer l'affichage des differents traitement\&. 
+Fonction qui me serre a separer l'affichage des differents traitements\&. 
 .PP
 Definition at line 5 of file interface\&.c\&.
 .SS "int read_file (FILE ** fp, char * out, int len)"
-Fonction qui va lire la une taille fix de caracteres à partir du fichier, et va la mettre dans out 
+
+.PP
+Fonction qui va lire la une taille fix de caractères à partir du fichier, et va la mettre dans out\&. 
 .PP
 \fBParameters\fP
 .RS 4
-\fIfp\fP double pointeur vers le fichier, car on appele fclose à l'interieur 
+\fIfp\fP double pointeur vers le fichier, car on appele fclose à l'intérieur 
 .br
-\fIout\fP tableau qui va recevoir le resultat de la lecture 
+\fIout\fP tableau qui va recevoir le résultat de la lecture 
 .br
-\fIlen\fP le nombre de caracteres qu'on voudrait lire 
+\fIlen\fP le nombre de caractères qu'on voudrait lire 
 .RE
 .PP
 \fBReturns\fP
 .RS 4
-le nombre de caracteres qu'on a pu lire (pas forcement egal à len) 
+le nombre de caractères qu'on a pu lire (pas forcement égal à len) 
 .RE
 .PP
 
 .PP
 Definition at line 21 of file interface\&.c\&.
 .SS "int save_file (char * text_crypt, int len, FILE ** fp_out)"
-Fonction qui permet de sauvegarder un tableau de char dans un fichier 
+
+.PP
+Fonction qui permet de sauvegarder un tableau de char dans un fichier\&. 
 .PP
 \fBParameters\fP
 .RS 4
 \fItext_crypt\fP tableau à enregistrer 
 .br
-\fIlen\fP taile du tableau 
+\fIlen\fP taille du tableau 
 .br
 \fIfp_out\fP double pointeur vers le fichier\&. On ferme le fichier apres traitement 
 .RE
 .PP
 \fBReturns\fP
 .RS 4
-0 si l'ecriture est réussie, sinon le nombre de caracteres qu'on a pu ecrire\&. 
+0 si l'écriture est réussie, sinon le nombre de caractères qu'on a pu écrire\&. 
 .RE
 .PP
 

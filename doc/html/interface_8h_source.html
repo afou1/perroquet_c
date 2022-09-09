@@ -9,6 +9,10 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -22,9 +26,9 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">perroquet
-   &#160;<span id="projectnumber">0.0.1</span>
+   &#160;<span id="projectnumber">0.0.1.1</span>
    </div>
-   <div id="projectbrief">chiffrement simple de fichiers txt</div>
+   <div id="projectbrief">Chiffrement simple de fichier txt</div>
   </td>
  </tr>
  </tbody>
@@ -48,6 +52,22 @@ $(function() {
 /* @license-end */</script>
 <div id="main-nav"></div>
 </div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('interface_8h_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -77,7 +97,7 @@ $(function() {
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &lt;argp.h&gt;</span></div>
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &lt;argz.h&gt;</span></div>
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160; </div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="comment">// Je voulais utiliser des macros pour remplacer les parties qui dependent de linux, mais j&#39;ai pas eu le temps de tester</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="comment">// Je voulais utiliser des macros pour remplacer les parties qui dependent de linux, mais je n&#39;ai pas eu le temps de tester.</span></div>
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#ifndef __unix__</span></div>
 <div class="line"><a name="l00013"></a><span class="lineno"><a class="line" href="interface_8h.html#a93329fc68c72e081f4980bdff755a1e3">   13</a></span>&#160;<span class="preprocessor">#define __fpurge fflush</span></div>
 <div class="line"><a name="l00014"></a><span class="lineno"><a class="line" href="interface_8h.html#a19865ecdd2722e5127c2c6b6effa73dc">   14</a></span>&#160;<span class="preprocessor">#define access _access</span></div>
@@ -90,57 +110,83 @@ $(function() {
 <div class="line"><a name="l00021"></a><span class="lineno"><a class="line" href="interface_8h.html#af783937c70ef34921b7619c1df652a1a">   21</a></span>&#160;<span class="preprocessor">#define TAILLE_MAX_BUFFER 100000</span></div>
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
 <div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; </div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="comment">/*</span></div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="comment"> * Structure qui va contenire tous les parametres necessaires au bon fonctionnement du programme.</span></div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="comment"> */</span></div>
-<div class="line"><a name="l00027"></a><span class="lineno"><a class="line" href="structs__params.html">   27</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct</span>{</div>
-<div class="line"><a name="l00028"></a><span class="lineno"><a class="line" href="structs__params.html#af275262f3b4b05d30be6f80828ad84fd">   28</a></span>&#160;    FILE* <a class="code" href="structs__params.html#af275262f3b4b05d30be6f80828ad84fd">fp_source</a>; </div>
-<div class="line"><a name="l00029"></a><span class="lineno"><a class="line" href="structs__params.html#a1b3aa46e53bf3c6301ec0d907d093d25">   29</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="structs__params.html#a1b3aa46e53bf3c6301ec0d907d093d25">size_source</a>; </div>
-<div class="line"><a name="l00030"></a><span class="lineno"><a class="line" href="structs__params.html#a265bf1b761ae2e70f20f9dd80fbe6d9b">   30</a></span>&#160;    <span class="keywordtype">char</span> path_source[FILENAME_MAX]; </div>
-<div class="line"><a name="l00031"></a><span class="lineno"><a class="line" href="structs__params.html#adf52f374e35258ed8629f954eed2fe1b">   31</a></span>&#160;    FILE* <a class="code" href="structs__params.html#adf52f374e35258ed8629f954eed2fe1b">fp_dest</a>; </div>
-<div class="line"><a name="l00032"></a><span class="lineno"><a class="line" href="structs__params.html#a44fd37690d9102ce29d2807299e66069">   32</a></span>&#160;    <span class="keywordtype">char</span> path_destination[FILENAME_MAX]; </div>
-<div class="line"><a name="l00033"></a><span class="lineno"><a class="line" href="structs__params.html#adc70d4e84269910476dae49835229efb">   33</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="structs__params.html#adc70d4e84269910476dae49835229efb">b_dest</a>; </div>
-<div class="line"><a name="l00034"></a><span class="lineno"><a class="line" href="structs__params.html#af79f73bbfd01f5d3dbfaa688e97fdf0a">   34</a></span>&#160;    <span class="keywordtype">char</span> cle[<a class="code" href="interface_8h.html#a73e0a05fefa924bcbf416fe6b3a67b13">TAILLE_MAX_CLE</a>]; </div>
-<div class="line"><a name="l00035"></a><span class="lineno"><a class="line" href="structs__params.html#a8f7fd22436a8ce9d0c5d10f5ab288f51">   35</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="structs__params.html#a8f7fd22436a8ce9d0c5d10f5ab288f51">size_cle</a>; </div>
-<div class="line"><a name="l00036"></a><span class="lineno"><a class="line" href="structs__params.html#a1717a9535b04cf377754eab8aac93de9">   36</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="structs__params.html#a1717a9535b04cf377754eab8aac93de9">mode_chiffrement</a>; </div>
-<div class="line"><a name="l00037"></a><span class="lineno"><a class="line" href="structs__params.html#a0ce56a692ce68929b56356d17208ba42">   37</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="structs__params.html#a0ce56a692ce68929b56356d17208ba42">keep</a>; </div>
-<div class="line"><a name="l00038"></a><span class="lineno"><a class="line" href="structs__params.html#a8cb750b77f14669ceaeae0f8976ee82c">   38</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="structs__params.html#a8cb750b77f14669ceaeae0f8976ee82c">b_overwrite</a>; </div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;}<a class="code" href="structs__params.html">s_params</a>;</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160; </div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160; </div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="keywordtype">void</span> <a class="code" href="interface_8h.html#ae976803a19b1d9133e25b5e47da21caa">print_sep</a>();</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="keywordtype">int</span> <a class="code" href="interface_8h.html#aed475c1cd069781375bfe2e2f3ef8d83">load_file</a>(<span class="keywordtype">char</span>* path,FILE** fp);</div>
+<div class="line"><a name="l00025"></a><span class="lineno"><a class="line" href="structs__params.html">   25</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct</span>{</div>
+<div class="line"><a name="l00026"></a><span class="lineno"><a class="line" href="structs__params.html#af275262f3b4b05d30be6f80828ad84fd">   26</a></span>&#160;    FILE* <a class="code" href="structs__params.html#af275262f3b4b05d30be6f80828ad84fd">fp_source</a>; </div>
+<div class="line"><a name="l00027"></a><span class="lineno"><a class="line" href="structs__params.html#a1b3aa46e53bf3c6301ec0d907d093d25">   27</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="structs__params.html#a1b3aa46e53bf3c6301ec0d907d093d25">size_source</a>; </div>
+<div class="line"><a name="l00028"></a><span class="lineno"><a class="line" href="structs__params.html#a265bf1b761ae2e70f20f9dd80fbe6d9b">   28</a></span>&#160;    <span class="keywordtype">char</span> path_source[FILENAME_MAX]; </div>
+<div class="line"><a name="l00029"></a><span class="lineno"><a class="line" href="structs__params.html#adf52f374e35258ed8629f954eed2fe1b">   29</a></span>&#160;    FILE* <a class="code" href="structs__params.html#adf52f374e35258ed8629f954eed2fe1b">fp_dest</a>; </div>
+<div class="line"><a name="l00030"></a><span class="lineno"><a class="line" href="structs__params.html#a44fd37690d9102ce29d2807299e66069">   30</a></span>&#160;    <span class="keywordtype">char</span> path_destination[FILENAME_MAX]; </div>
+<div class="line"><a name="l00031"></a><span class="lineno"><a class="line" href="structs__params.html#adc70d4e84269910476dae49835229efb">   31</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="structs__params.html#adc70d4e84269910476dae49835229efb">b_dest</a>; </div>
+<div class="line"><a name="l00032"></a><span class="lineno"><a class="line" href="structs__params.html#af79f73bbfd01f5d3dbfaa688e97fdf0a">   32</a></span>&#160;    <span class="keywordtype">char</span> cle[<a class="code" href="interface_8h.html#a73e0a05fefa924bcbf416fe6b3a67b13">TAILLE_MAX_CLE</a>]; </div>
+<div class="line"><a name="l00033"></a><span class="lineno"><a class="line" href="structs__params.html#a8f7fd22436a8ce9d0c5d10f5ab288f51">   33</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="structs__params.html#a8f7fd22436a8ce9d0c5d10f5ab288f51">size_cle</a>; </div>
+<div class="line"><a name="l00034"></a><span class="lineno"><a class="line" href="structs__params.html#a1717a9535b04cf377754eab8aac93de9">   34</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="structs__params.html#a1717a9535b04cf377754eab8aac93de9">mode_chiffrement</a>; </div>
+<div class="line"><a name="l00035"></a><span class="lineno"><a class="line" href="structs__params.html#a0ce56a692ce68929b56356d17208ba42">   35</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="structs__params.html#a0ce56a692ce68929b56356d17208ba42">keep</a>; </div>
+<div class="line"><a name="l00036"></a><span class="lineno"><a class="line" href="structs__params.html#a8cb750b77f14669ceaeae0f8976ee82c">   36</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="structs__params.html#a8cb750b77f14669ceaeae0f8976ee82c">b_overwrite</a>; </div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;}<a class="code" href="structs__params.html">s_params</a>;</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160; </div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160; </div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="keywordtype">void</span> <a class="code" href="interface_8h.html#ae976803a19b1d9133e25b5e47da21caa">print_sep</a>();</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160; </div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="keywordtype">int</span> <a class="code" href="interface_8h.html#aed475c1cd069781375bfe2e2f3ef8d83">load_file</a>(<span class="keywordtype">char</span>* path,FILE** fp);</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160; </div>
 <div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="keywordtype">int</span> <a class="code" href="interface_8h.html#a6fd581aa5621803b0e6f40c8147eeb03">read_file</a>(FILE** fp,<span class="keywordtype">char</span> *out,<span class="keywordtype">int</span> len);</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;<span class="keywordtype">int</span> <a class="code" href="interface_8h.html#a3ca769819b8881bbae4eacb4c69d259e">save_file</a>(<span class="keywordtype">char</span>* text_crypt,<span class="keywordtype">int</span> len,FILE** fp_out);</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;<span class="keywordtype">void</span> <a class="code" href="interface_8h.html#ad98ceaa9822eec3bf7010d3f18dd87b0">init_params</a>(<a class="code" href="structs__params.html">s_params</a> *params);</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;<span class="keywordtype">void</span> <a class="code" href="interface_8h.html#a631f3956b702bcc55f7e3ab97958b965">loop_err_file</a>(<span class="keywordtype">char</span>* path,<span class="keywordtype">char</span>* filename,<span class="keywordtype">char</span> *mode);</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;<span class="keywordtype">void</span> <a class="code" href="interface_8h.html#a4de6a28bbd6f0151d0ef33ef7667753b">loop_err_dest</a>(<span class="keywordtype">char</span>* path,<span class="keywordtype">int</span> b_overwrite);</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;<span class="keywordtype">void</span> <a class="code" href="interface_8h.html#a7723fee1197bd96dc84f5a76eecfec39">load_params</a>(<span class="keywordtype">int</span> argc,<span class="keywordtype">char</span> **argv, <a class="code" href="structs__params.html">s_params</a> *params);</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;<span class="keywordtype">void</span> <a class="code" href="interface_8h.html#a34c85c8a32be6618b902ad4ddc56e62b">close_everything</a>(<a class="code" href="structs__params.html">s_params</a> *params);</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;<span class="preprocessor">#endif </span><span class="comment">//PROJETC_ASTEK_INTERFACE_H</span></div>
-<div class="ttc" id="ainterface_8h_html_a34c85c8a32be6618b902ad4ddc56e62b"><div class="ttname"><a href="interface_8h.html#a34c85c8a32be6618b902ad4ddc56e62b">close_everything</a></div><div class="ttdeci">void close_everything(s_params *params)</div><div class="ttdef"><b>Definition:</b> <a href="interface_8c_source.html#l00091">interface.c:91</a></div></div>
-<div class="ttc" id="ainterface_8h_html_a3ca769819b8881bbae4eacb4c69d259e"><div class="ttname"><a href="interface_8h.html#a3ca769819b8881bbae4eacb4c69d259e">save_file</a></div><div class="ttdeci">int save_file(char *text_crypt, int len, FILE **fp_out)</div><div class="ttdef"><b>Definition:</b> <a href="interface_8c_source.html#l00035">interface.c:35</a></div></div>
-<div class="ttc" id="ainterface_8h_html_a4de6a28bbd6f0151d0ef33ef7667753b"><div class="ttname"><a href="interface_8h.html#a4de6a28bbd6f0151d0ef33ef7667753b">loop_err_dest</a></div><div class="ttdeci">void loop_err_dest(char *path, int b_overwrite)</div><div class="ttdef"><b>Definition:</b> <a href="interface_8c_source.html#l00068">interface.c:68</a></div></div>
-<div class="ttc" id="ainterface_8h_html_a631f3956b702bcc55f7e3ab97958b965"><div class="ttname"><a href="interface_8h.html#a631f3956b702bcc55f7e3ab97958b965">loop_err_file</a></div><div class="ttdeci">void loop_err_file(char *path, char *filename, char *mode)</div><div class="ttdef"><b>Definition:</b> <a href="interface_8c_source.html#l00055">interface.c:55</a></div></div>
-<div class="ttc" id="ainterface_8h_html_a6fd581aa5621803b0e6f40c8147eeb03"><div class="ttname"><a href="interface_8h.html#a6fd581aa5621803b0e6f40c8147eeb03">read_file</a></div><div class="ttdeci">int read_file(FILE **fp, char *out, int len)</div><div class="ttdef"><b>Definition:</b> <a href="interface_8c_source.html#l00021">interface.c:21</a></div></div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160; </div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;<span class="keywordtype">int</span> <a class="code" href="interface_8h.html#a3ca769819b8881bbae4eacb4c69d259e">save_file</a>(<span class="keywordtype">char</span>* text_crypt,<span class="keywordtype">int</span> len,FILE** fp_out);</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160; </div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;<span class="keywordtype">void</span> <a class="code" href="interface_8h.html#ad98ceaa9822eec3bf7010d3f18dd87b0">init_params</a>(<a class="code" href="structs__params.html">s_params</a> *params);</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160; </div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;<span class="keywordtype">void</span> <a class="code" href="interface_8h.html#a631f3956b702bcc55f7e3ab97958b965">loop_err_file</a>(<span class="keywordtype">char</span>* path,<span class="keywordtype">char</span>* filename,<span class="keywordtype">char</span> *mode);</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160; </div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;<span class="keywordtype">void</span> <a class="code" href="interface_8h.html#a4de6a28bbd6f0151d0ef33ef7667753b">loop_err_dest</a>(<span class="keywordtype">char</span>* path,<span class="keywordtype">int</span> b_overwrite);</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160; </div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;<span class="keywordtype">void</span> <a class="code" href="interface_8h.html#a7723fee1197bd96dc84f5a76eecfec39">load_params</a>(<span class="keywordtype">int</span> argc,<span class="keywordtype">char</span> **argv, <a class="code" href="structs__params.html">s_params</a> *params);</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160; </div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;<span class="keywordtype">void</span> <a class="code" href="interface_8h.html#a34c85c8a32be6618b902ad4ddc56e62b">close_everything</a>(<a class="code" href="structs__params.html">s_params</a> *params);</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160; </div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160; </div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160; </div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;<span class="keywordtype">void</span> <a class="code" href="interface_8h.html#a43544e99aa687b28793c83a6b4a7e2d9">check_mode</a>(<span class="keywordtype">char</span>* arg,<a class="code" href="structs__params.html">s_params</a> *params);</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160; </div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;<span class="keywordtype">void</span> <a class="code" href="interface_8h.html#a7517eb7e51217904f73a94f38792c29a">load_source</a>(<a class="code" href="structs__params.html">s_params</a> *params);</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160; </div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;<span class="keywordtype">void</span> <a class="code" href="interface_8h.html#a839b8969272e433d9c23993f900c0d7b">load_pass</a>(<a class="code" href="structs__params.html">s_params</a> *params);</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160; </div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;<span class="keywordtype">void</span> <a class="code" href="interface_8h.html#a1315dbb67b9b5e5020ab363ccfdff827">load_dest</a>(<a class="code" href="structs__params.html">s_params</a> *params);</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160; </div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;<span class="keywordtype">void</span> <a class="code" href="interface_8h.html#a4cae80ccb09c2361f6222ccb951f1371">load_mode</a>(<a class="code" href="structs__params.html">s_params</a> *params);</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;<span class="preprocessor">#endif </span><span class="comment">//PROJETC_ASTEK_INTERFACE_H</span></div>
+<div class="ttc" id="ainterface_8h_html_a1315dbb67b9b5e5020ab363ccfdff827"><div class="ttname"><a href="interface_8h.html#a1315dbb67b9b5e5020ab363ccfdff827">load_dest</a></div><div class="ttdeci">void load_dest(s_params *params)</div><div class="ttdoc">Fonction pour le chargement du fichier destination, dans le cas ou il n'a pas ete passé en argument.</div><div class="ttdef"><b>Definition:</b> <a href="interface_8c_source.html#l00227">interface.c:227</a></div></div>
+<div class="ttc" id="ainterface_8h_html_a34c85c8a32be6618b902ad4ddc56e62b"><div class="ttname"><a href="interface_8h.html#a34c85c8a32be6618b902ad4ddc56e62b">close_everything</a></div><div class="ttdeci">void close_everything(s_params *params)</div><div class="ttdoc">Fonction qui devrait permettre de fermer les fichier dans le cas d'une sortie soudaine à cause d'une ...</div><div class="ttdef"><b>Definition:</b> <a href="interface_8c_source.html#l00091">interface.c:91</a></div></div>
+<div class="ttc" id="ainterface_8h_html_a3ca769819b8881bbae4eacb4c69d259e"><div class="ttname"><a href="interface_8h.html#a3ca769819b8881bbae4eacb4c69d259e">save_file</a></div><div class="ttdeci">int save_file(char *text_crypt, int len, FILE **fp_out)</div><div class="ttdoc">Fonction qui permet de sauvegarder un tableau de char dans un fichier.</div><div class="ttdef"><b>Definition:</b> <a href="interface_8c_source.html#l00035">interface.c:35</a></div></div>
+<div class="ttc" id="ainterface_8h_html_a43544e99aa687b28793c83a6b4a7e2d9"><div class="ttname"><a href="interface_8h.html#a43544e99aa687b28793c83a6b4a7e2d9">check_mode</a></div><div class="ttdeci">void check_mode(char *arg, s_params *params)</div><div class="ttdoc">Fonction qui permet juste de voir si le premier argument passer est la definition du mode d'execution...</div><div class="ttdef"><b>Definition:</b> <a href="interface_8c_source.html#l00164">interface.c:164</a></div></div>
+<div class="ttc" id="ainterface_8h_html_a4cae80ccb09c2361f6222ccb951f1371"><div class="ttname"><a href="interface_8h.html#a4cae80ccb09c2361f6222ccb951f1371">load_mode</a></div><div class="ttdeci">void load_mode(s_params *params)</div><div class="ttdoc">Fonction pour le selection du mode d'execution (crypt/decrypt) selon les arguments,...</div><div class="ttdef"><b>Definition:</b> <a href="interface_8c_source.html#l00244">interface.c:244</a></div></div>
+<div class="ttc" id="ainterface_8h_html_a4de6a28bbd6f0151d0ef33ef7667753b"><div class="ttname"><a href="interface_8h.html#a4de6a28bbd6f0151d0ef33ef7667753b">loop_err_dest</a></div><div class="ttdeci">void loop_err_dest(char *path, int b_overwrite)</div><div class="ttdoc">Fonction qui prend l'input d'un utilisateur et qui va boucler tant qu'on a pas un chemin utilisable p...</div><div class="ttdef"><b>Definition:</b> <a href="interface_8c_source.html#l00068">interface.c:68</a></div></div>
+<div class="ttc" id="ainterface_8h_html_a631f3956b702bcc55f7e3ab97958b965"><div class="ttname"><a href="interface_8h.html#a631f3956b702bcc55f7e3ab97958b965">loop_err_file</a></div><div class="ttdeci">void loop_err_file(char *path, char *filename, char *mode)</div><div class="ttdoc">Fonction qui prend l'input d'un utilisateur et qui va boucler tant qu'on a pas un chemin utilisable p...</div><div class="ttdef"><b>Definition:</b> <a href="interface_8c_source.html#l00055">interface.c:55</a></div></div>
+<div class="ttc" id="ainterface_8h_html_a6fd581aa5621803b0e6f40c8147eeb03"><div class="ttname"><a href="interface_8h.html#a6fd581aa5621803b0e6f40c8147eeb03">read_file</a></div><div class="ttdeci">int read_file(FILE **fp, char *out, int len)</div><div class="ttdoc">Fonction qui va lire la une taille fix de caractères à partir du fichier, et va la mettre dans out.</div><div class="ttdef"><b>Definition:</b> <a href="interface_8c_source.html#l00021">interface.c:21</a></div></div>
 <div class="ttc" id="ainterface_8h_html_a73e0a05fefa924bcbf416fe6b3a67b13"><div class="ttname"><a href="interface_8h.html#a73e0a05fefa924bcbf416fe6b3a67b13">TAILLE_MAX_CLE</a></div><div class="ttdeci">#define TAILLE_MAX_CLE</div><div class="ttdef"><b>Definition:</b> <a href="interface_8h_source.html#l00020">interface.h:20</a></div></div>
-<div class="ttc" id="ainterface_8h_html_a7723fee1197bd96dc84f5a76eecfec39"><div class="ttname"><a href="interface_8h.html#a7723fee1197bd96dc84f5a76eecfec39">load_params</a></div><div class="ttdeci">void load_params(int argc, char **argv, s_params *params)</div><div class="ttdef"><b>Definition:</b> <a href="interface_8c_source.html#l00258">interface.c:258</a></div></div>
-<div class="ttc" id="ainterface_8h_html_ad98ceaa9822eec3bf7010d3f18dd87b0"><div class="ttname"><a href="interface_8h.html#ad98ceaa9822eec3bf7010d3f18dd87b0">init_params</a></div><div class="ttdeci">void init_params(s_params *params)</div><div class="ttdef"><b>Definition:</b> <a href="interface_8c_source.html#l00044">interface.c:44</a></div></div>
-<div class="ttc" id="ainterface_8h_html_ae976803a19b1d9133e25b5e47da21caa"><div class="ttname"><a href="interface_8h.html#ae976803a19b1d9133e25b5e47da21caa">print_sep</a></div><div class="ttdeci">void print_sep()</div><div class="ttdoc">Fonction qui me serre a separer l'affichage des differents traitement.</div><div class="ttdef"><b>Definition:</b> <a href="interface_8c_source.html#l00005">interface.c:5</a></div></div>
-<div class="ttc" id="ainterface_8h_html_aed475c1cd069781375bfe2e2f3ef8d83"><div class="ttname"><a href="interface_8h.html#aed475c1cd069781375bfe2e2f3ef8d83">load_file</a></div><div class="ttdeci">int load_file(char *path, FILE **fp)</div><div class="ttdef"><b>Definition:</b> <a href="interface_8c_source.html#l00010">interface.c:10</a></div></div>
-<div class="ttc" id="astructs__params_html"><div class="ttname"><a href="structs__params.html">s_params</a></div><div class="ttdef"><b>Definition:</b> <a href="interface_8h_source.html#l00027">interface.h:27</a></div></div>
-<div class="ttc" id="astructs__params_html_a0ce56a692ce68929b56356d17208ba42"><div class="ttname"><a href="structs__params.html#a0ce56a692ce68929b56356d17208ba42">s_params::keep</a></div><div class="ttdeci">int keep</div><div class="ttdef"><b>Definition:</b> <a href="interface_8h_source.html#l00037">interface.h:37</a></div></div>
-<div class="ttc" id="astructs__params_html_a1717a9535b04cf377754eab8aac93de9"><div class="ttname"><a href="structs__params.html#a1717a9535b04cf377754eab8aac93de9">s_params::mode_chiffrement</a></div><div class="ttdeci">int mode_chiffrement</div><div class="ttdef"><b>Definition:</b> <a href="interface_8h_source.html#l00036">interface.h:36</a></div></div>
-<div class="ttc" id="astructs__params_html_a1b3aa46e53bf3c6301ec0d907d093d25"><div class="ttname"><a href="structs__params.html#a1b3aa46e53bf3c6301ec0d907d093d25">s_params::size_source</a></div><div class="ttdeci">int size_source</div><div class="ttdef"><b>Definition:</b> <a href="interface_8h_source.html#l00029">interface.h:29</a></div></div>
-<div class="ttc" id="astructs__params_html_a8cb750b77f14669ceaeae0f8976ee82c"><div class="ttname"><a href="structs__params.html#a8cb750b77f14669ceaeae0f8976ee82c">s_params::b_overwrite</a></div><div class="ttdeci">int b_overwrite</div><div class="ttdef"><b>Definition:</b> <a href="interface_8h_source.html#l00038">interface.h:38</a></div></div>
-<div class="ttc" id="astructs__params_html_a8f7fd22436a8ce9d0c5d10f5ab288f51"><div class="ttname"><a href="structs__params.html#a8f7fd22436a8ce9d0c5d10f5ab288f51">s_params::size_cle</a></div><div class="ttdeci">int size_cle</div><div class="ttdef"><b>Definition:</b> <a href="interface_8h_source.html#l00035">interface.h:35</a></div></div>
-<div class="ttc" id="astructs__params_html_adc70d4e84269910476dae49835229efb"><div class="ttname"><a href="structs__params.html#adc70d4e84269910476dae49835229efb">s_params::b_dest</a></div><div class="ttdeci">int b_dest</div><div class="ttdef"><b>Definition:</b> <a href="interface_8h_source.html#l00033">interface.h:33</a></div></div>
-<div class="ttc" id="astructs__params_html_adf52f374e35258ed8629f954eed2fe1b"><div class="ttname"><a href="structs__params.html#adf52f374e35258ed8629f954eed2fe1b">s_params::fp_dest</a></div><div class="ttdeci">FILE * fp_dest</div><div class="ttdef"><b>Definition:</b> <a href="interface_8h_source.html#l00031">interface.h:31</a></div></div>
-<div class="ttc" id="astructs__params_html_af275262f3b4b05d30be6f80828ad84fd"><div class="ttname"><a href="structs__params.html#af275262f3b4b05d30be6f80828ad84fd">s_params::fp_source</a></div><div class="ttdeci">FILE * fp_source</div><div class="ttdef"><b>Definition:</b> <a href="interface_8h_source.html#l00028">interface.h:28</a></div></div>
+<div class="ttc" id="ainterface_8h_html_a7517eb7e51217904f73a94f38792c29a"><div class="ttname"><a href="interface_8h.html#a7517eb7e51217904f73a94f38792c29a">load_source</a></div><div class="ttdeci">void load_source(s_params *params)</div><div class="ttdoc">Fonction pour le chargement du fichier source, dans le cas ou il n'a pas ete passé en argument.</div><div class="ttdef"><b>Definition:</b> <a href="interface_8c_source.html#l00172">interface.c:172</a></div></div>
+<div class="ttc" id="ainterface_8h_html_a7723fee1197bd96dc84f5a76eecfec39"><div class="ttname"><a href="interface_8h.html#a7723fee1197bd96dc84f5a76eecfec39">load_params</a></div><div class="ttdeci">void load_params(int argc, char **argv, s_params *params)</div><div class="ttdoc">Fonction d'entré pour l'interface, elle va charger tout les parameteres necessaire à l'execution du p...</div><div class="ttdef"><b>Definition:</b> <a href="interface_8c_source.html#l00264">interface.c:264</a></div></div>
+<div class="ttc" id="ainterface_8h_html_a839b8969272e433d9c23993f900c0d7b"><div class="ttname"><a href="interface_8h.html#a839b8969272e433d9c23993f900c0d7b">load_pass</a></div><div class="ttdeci">void load_pass(s_params *params)</div><div class="ttdoc">Fonction pour le chargement du fichier de mot de passe, ou lecture direct en entrée.</div><div class="ttdef"><b>Definition:</b> <a href="interface_8c_source.html#l00184">interface.c:184</a></div></div>
+<div class="ttc" id="ainterface_8h_html_ad98ceaa9822eec3bf7010d3f18dd87b0"><div class="ttname"><a href="interface_8h.html#ad98ceaa9822eec3bf7010d3f18dd87b0">init_params</a></div><div class="ttdeci">void init_params(s_params *params)</div><div class="ttdoc">initialise les paramètres/fonctionnement par default du programme.</div><div class="ttdef"><b>Definition:</b> <a href="interface_8c_source.html#l00044">interface.c:44</a></div></div>
+<div class="ttc" id="ainterface_8h_html_ae976803a19b1d9133e25b5e47da21caa"><div class="ttname"><a href="interface_8h.html#ae976803a19b1d9133e25b5e47da21caa">print_sep</a></div><div class="ttdeci">void print_sep()</div><div class="ttdoc">Fonction qui me serre a separer l'affichage des differents traitements.</div><div class="ttdef"><b>Definition:</b> <a href="interface_8c_source.html#l00005">interface.c:5</a></div></div>
+<div class="ttc" id="ainterface_8h_html_aed475c1cd069781375bfe2e2f3ef8d83"><div class="ttname"><a href="interface_8h.html#aed475c1cd069781375bfe2e2f3ef8d83">load_file</a></div><div class="ttdeci">int load_file(char *path, FILE **fp)</div><div class="ttdoc">Fonction qui va charger un fichier à partir d'un chemin.</div><div class="ttdef"><b>Definition:</b> <a href="interface_8c_source.html#l00010">interface.c:10</a></div></div>
+<div class="ttc" id="astructs__params_html"><div class="ttname"><a href="structs__params.html">s_params</a></div><div class="ttdoc">Structure qui contient toutes les infromations pour definir le fonctionnement du programme.</div><div class="ttdef"><b>Definition:</b> <a href="interface_8h_source.html#l00025">interface.h:25</a></div></div>
+<div class="ttc" id="astructs__params_html_a0ce56a692ce68929b56356d17208ba42"><div class="ttname"><a href="structs__params.html#a0ce56a692ce68929b56356d17208ba42">s_params::keep</a></div><div class="ttdeci">int keep</div><div class="ttdef"><b>Definition:</b> <a href="interface_8h_source.html#l00035">interface.h:35</a></div></div>
+<div class="ttc" id="astructs__params_html_a1717a9535b04cf377754eab8aac93de9"><div class="ttname"><a href="structs__params.html#a1717a9535b04cf377754eab8aac93de9">s_params::mode_chiffrement</a></div><div class="ttdeci">int mode_chiffrement</div><div class="ttdef"><b>Definition:</b> <a href="interface_8h_source.html#l00034">interface.h:34</a></div></div>
+<div class="ttc" id="astructs__params_html_a1b3aa46e53bf3c6301ec0d907d093d25"><div class="ttname"><a href="structs__params.html#a1b3aa46e53bf3c6301ec0d907d093d25">s_params::size_source</a></div><div class="ttdeci">int size_source</div><div class="ttdef"><b>Definition:</b> <a href="interface_8h_source.html#l00027">interface.h:27</a></div></div>
+<div class="ttc" id="astructs__params_html_a8cb750b77f14669ceaeae0f8976ee82c"><div class="ttname"><a href="structs__params.html#a8cb750b77f14669ceaeae0f8976ee82c">s_params::b_overwrite</a></div><div class="ttdeci">int b_overwrite</div><div class="ttdef"><b>Definition:</b> <a href="interface_8h_source.html#l00036">interface.h:36</a></div></div>
+<div class="ttc" id="astructs__params_html_a8f7fd22436a8ce9d0c5d10f5ab288f51"><div class="ttname"><a href="structs__params.html#a8f7fd22436a8ce9d0c5d10f5ab288f51">s_params::size_cle</a></div><div class="ttdeci">int size_cle</div><div class="ttdef"><b>Definition:</b> <a href="interface_8h_source.html#l00033">interface.h:33</a></div></div>
+<div class="ttc" id="astructs__params_html_adc70d4e84269910476dae49835229efb"><div class="ttname"><a href="structs__params.html#adc70d4e84269910476dae49835229efb">s_params::b_dest</a></div><div class="ttdeci">int b_dest</div><div class="ttdef"><b>Definition:</b> <a href="interface_8h_source.html#l00031">interface.h:31</a></div></div>
+<div class="ttc" id="astructs__params_html_adf52f374e35258ed8629f954eed2fe1b"><div class="ttname"><a href="structs__params.html#adf52f374e35258ed8629f954eed2fe1b">s_params::fp_dest</a></div><div class="ttdeci">FILE * fp_dest</div><div class="ttdef"><b>Definition:</b> <a href="interface_8h_source.html#l00029">interface.h:29</a></div></div>
+<div class="ttc" id="astructs__params_html_af275262f3b4b05d30be6f80828ad84fd"><div class="ttname"><a href="structs__params.html#af275262f3b4b05d30be6f80828ad84fd">s_params::fp_source</a></div><div class="ttdeci">FILE * fp_source</div><div class="ttdef"><b>Definition:</b> <a href="interface_8h_source.html#l00026">interface.h:26</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="interface_8h.html">interface.h</a></li>
+    <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+  </ul>
+</div>
 </body>
 </html>
