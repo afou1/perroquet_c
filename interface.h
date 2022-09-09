@@ -31,6 +31,7 @@ typedef struct{
     int size_cle;
     int mode_chiffrement;
     int keep;
+    int b_overwrite;
 
 }s_params;
 
@@ -42,6 +43,7 @@ int read_file(FILE** fp,char *out,int len);
 int save_file(char* text_crypt,int len,FILE** fp_out);
 void init_params(s_params *params);
 void loop_err_file(char* path,char* filename,char *mode);
+void loop_err_dest(char* path,int b_overwrite);
 void load_params(int argc,char **argv, s_params *params);
 void close_everything(s_params *params);
 #endif //PROJETC_ASTEK_INTERFACE_H

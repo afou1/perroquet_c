@@ -46,6 +46,7 @@ void init_params(s_params *params){
     params->mode_chiffrement=-1;
     params->keep=0;
     params->b_dest=0;
+    params->b_overwrite=0;
 }
 
 void loop_err_file(char* path,char* filename,char *mode){
@@ -57,6 +58,29 @@ void loop_err_file(char* path,char* filename,char *mode){
         printf("Veuillez reessayer:");
         __fpurge(stdin);
         scanf("%s",path);
+    }
+    if(fp) fclose(fp);
+}
+
+void loop_err_dest(char* path,int b_overwrite){
+    FILE* fp=NULL;
+    int exist_wfile=(access(path,W_OK)==0);
+    while( exist_wfile || ((fp= fopen(path,"wb"))==0)){
+        if(exist_wfile){
+            if(b_overwrite){
+                break;
+            }else{
+                printf("Argument ignoré. Fichier deja existant,\n--help pour voir l'argument necessaire\n");
+                print_sep();
+            }
+        }else{
+            printf("Impossible de lire le fichier destination:  %s\n",path);
+            printf("Message system: %s\n",strerror(errno));
+        }
+        printf("Veuillez reessayer:");
+        __fpurge(stdin);
+        scanf("%s",path);
+        exist_wfile=(access(path,W_OK)==0);
     }
     if(fp) fclose(fp);
 }
@@ -85,9 +109,14 @@ static int parse_opt (int key, char *arg,struct argp_state *state){
             }
             break;
         case 'o':
-            if(access(arg,W_OK)==0){
-
-            }if((fp=fopen(arg,"wb"))){
+            if (access(arg,W_OK)==0){
+                strcpy(params->path_destination,arg);
+                if(params->b_overwrite){
+                    params->b_dest=2;
+                }else{
+                    params->b_dest=3;
+                }
+            }else if(access(arg,F_OK) && (fp=fopen(arg,"wb"))){
                 strcpy(params->path_destination,arg);
                 params->b_dest=1;
                 fclose(fp);
@@ -105,13 +134,16 @@ static int parse_opt (int key, char *arg,struct argp_state *state){
         case 'k':
             params->keep=1;
             break;
+        case 684:
+            params->b_overwrite=1;
+            break;
         default:
             if(arg && strcmp("crypt",arg) && strcmp("decrypt",arg)){
                 fprintf(stderr,"Argument non reconnu:  %s\n",arg);
                 print_sep();
                 int del_dest=(params->fp_dest!=NULL);
                 close_everything(params);
-                if(del_dest){
+                if(del_dest==1){
                     remove(params->path_destination);
                 }
                 exit(EXIT_FAILURE);
@@ -162,8 +194,9 @@ void load_pass(s_params *params){
     }else if (params->mode_chiffrement==0){
         int l_read= load_file(path_cle,&fp);
         if(l_read>0){
-            char cle_existante[l_read];
+            char cle_existante[l_read+1];
             read_file(&fp,cle_existante,l_read);
+            cle_existante[l_read]='\0';
             if(strcmp(cle_existante,params->cle)!=0){
                 fprintf(stderr,"Cle ne correspant pas à celle sauvegardé dans le fichier %s\n",path_cle);
                 print_sep();
@@ -183,11 +216,16 @@ void load_pass(s_params *params){
 }
 
 void load_dest(s_params *params){
-    if (!params->b_dest){
+    if((params->b_dest==3) && (params->b_overwrite==0)){
+        printf("Argument ignoré. Fichier deja existant,\n--help pour voir l'argument necessaire\n");
+        print_sep();
+        params->b_dest=0;
+    }
+    if (params->b_dest==0){
         printf("Fichier destination:");
         __fpurge(stdin);
         scanf("%s",params->path_destination);
-        loop_err_file(params->path_destination,"destination","wb");
+        loop_err_dest(params->path_destination,params->b_overwrite);
     }
     params->fp_dest= fopen(params->path_destination,"wb");
     printf("Fichier destination charge: %s\n",params->path_destination);
@@ -222,6 +260,7 @@ void load_params(int argc,char **argv, s_params *params){
                     { "output", 'o', "CHEMIN", 0, "Chemin du fichier destination",2},
                     { "pass", 'p', "CLE", 0, "Passer CLE comme clé de cryptage",2},
                     { "keep", 'k', 0, 0, "Le fichier source n'est pas supprimé",2},
+                    { "overwrite", 684, 0, 0, "Si le fichier destination existe deja, il sera ecrasé",2},
                     {0,0,0,0,"Options mode d'execution",1} ,
                     { "crypt", 1024, 0, OPTION_DOC, "Mode chiffrement",1},
                     { "decrypt", 1025, 0, OPTION_DOC, "Mode dechiffrement",1},

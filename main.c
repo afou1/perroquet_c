@@ -5,6 +5,7 @@ const char *argp_program_bug_address = "boukhatem.abderraouf@gmail.com";
 const char *argp_program_version = "0.0.1";
 
 int main(int argc,char** argv) {
+    print_sep();
     s_params params;
     load_params(argc,argv,&params);
     if(params.mode_chiffrement){
